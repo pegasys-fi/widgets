@@ -9,7 +9,7 @@ import { ExplorerDataType, getExplorerLink } from 'utils/getExplorerLink'
 import ExternalLink from './ExternalLink'
 import Row from './Row'
 
-const StyledExternalLink = styled(ExternalLink)<{ color: Color }>`
+const StyledExternalLink = styled(ExternalLink) <{ color: Color }>`
   color: ${({ theme, color }) => theme[color]};
   text-decoration: none;
 `
@@ -31,7 +31,7 @@ export default function EtherscanLink({
 }: EtherscanLinkProps) {
   const { chainId } = useWeb3React()
   const url = useMemo(
-    () => data && getExplorerLink(chainId || SupportedChainId.MAINNET, data, type),
+    () => data && getExplorerLink(chainId || SupportedChainId.ROLLUX_TESTNET, data, type),
     [chainId, data, type]
   )
 

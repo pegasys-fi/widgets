@@ -1,4 +1,4 @@
-import defaultTokenList from '@uniswap/default-token-list'
+import defaultTokenList from '@pollum-io/default-token-list'
 import { fetch } from 'test'
 
 import fetchTokenList from './fetchTokenList'

@@ -1,5 +1,5 @@
 import { Contract } from '@ethersproject/contracts'
-import UniswapInterfaceMulticallJson from '@uniswap/v3-periphery/artifacts/contracts/lens/UniswapInterfaceMulticall.sol/UniswapInterfaceMulticall.json'
+import PegasysInterfaceMulticallJson from '@pollum-io/v2-periphery/artifacts/contracts/lens/PegasysInterfaceMulticall.sol/PegasysInterfaceMulticall.json'
 import { useWeb3React } from '@web3-react/core'
 import ARGENT_WALLET_DETECTOR_ABI from 'abis/argent-wallet-detector.json'
 import EIP_2612 from 'abis/eip_2612.json'
@@ -12,10 +12,10 @@ import WETH_ABI from 'abis/weth.json'
 import { ARGENT_WALLET_DETECTOR_ADDRESS, ENS_REGISTRAR_ADDRESSES, MULTICALL_ADDRESS } from 'constants/addresses'
 import { WRAPPED_NATIVE_CURRENCY } from 'constants/tokens'
 import { useMemo } from 'react'
-import { UniswapInterfaceMulticall } from 'types/v3'
+import { PegasysInterfaceMulticall } from 'types/v3'
 import { getContract } from 'utils'
 
-const { abi: MulticallABI } = UniswapInterfaceMulticallJson
+const { abi: MulticallABI } = PegasysInterfaceMulticallJson
 
 // returns null on errors
 export function useContract<T extends Contract = Contract>(
@@ -74,5 +74,5 @@ export function useEIP2612Contract(tokenAddress?: string): Contract | null {
 }
 
 export function useInterfaceMulticall() {
-  return useContract<UniswapInterfaceMulticall>(MULTICALL_ADDRESS, MulticallABI, false) as UniswapInterfaceMulticall
+  return useContract<PegasysInterfaceMulticall>(MULTICALL_ADDRESS, MulticallABI, false) as PegasysInterfaceMulticall
 }

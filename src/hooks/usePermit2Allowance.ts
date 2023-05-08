@@ -1,5 +1,6 @@
-import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
-import { CurrencyAmount, Token } from '@uniswap/sdk-core'
+// import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+import { PERMIT2_ADDRESS } from '@pollum-io/universal-router-sdk'
+import { CurrencyAmount, Token } from '@pollum-io/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import { STANDARD_L1_BLOCK_TIME } from 'constants/chainInfo'
 import { useAddTransactionInfo, usePendingApproval } from 'hooks/transactions'
@@ -31,9 +32,9 @@ export interface AllowanceRequired {
 export type Allowance =
   | { state: AllowanceState.LOADING }
   | {
-      state: AllowanceState.ALLOWED
-      permitSignature?: PermitSignature
-    }
+    state: AllowanceState.ALLOWED
+    permitSignature?: PermitSignature
+  }
   | AllowanceRequired
 
 export default function usePermit2Allowance(amount?: CurrencyAmount<Token>, spender?: string): Allowance {

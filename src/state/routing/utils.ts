@@ -1,8 +1,8 @@
-import { MixedRouteSDK } from '@uniswap/router-sdk'
-import { Currency, CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { Pair, Route as V2Route } from '@uniswap/v2-sdk'
-import { FeeAmount, Pool, Route as V3Route } from '@uniswap/v3-sdk'
-import { isPolygonChain } from 'constants/chains'
+import { MixedRouteSDK } from '@pollum-io/router-sdk'
+import { Currency, CurrencyAmount, Token } from '@pollum-io/sdk-core'
+import { Pair, Route as V2Route } from '@pollum-io/v1-sdk'
+import { FeeAmount, Pool, Route as V3Route } from '@pollum-io/v2-sdk'
+// import { isPolygonChain } from 'constants/chains'
 import { nativeOnChain } from 'constants/tokens'
 import { PoolType, SwapRouterNativeAssets } from 'hooks/routing/types'
 
@@ -19,12 +19,12 @@ export function computeRoutes(
   routes: QuoteData['route']
 ):
   | {
-      routev3: V3Route<Currency, Currency> | null
-      routev2: V2Route<Currency, Currency> | null
-      mixedRoute: MixedRouteSDK<Currency, Currency> | null
-      inputAmount: CurrencyAmount<Currency>
-      outputAmount: CurrencyAmount<Currency>
-    }[]
+    routev3: V3Route<Currency, Currency> | null
+    routev2: V2Route<Currency, Currency> | null
+    mixedRoute: MixedRouteSDK<Currency, Currency> | null
+    inputAmount: CurrencyAmount<Currency>
+    outputAmount: CurrencyAmount<Currency>
+  }[]
   | undefined {
   if (routes.length === 0) return []
 
@@ -74,23 +74,23 @@ export function transformQuoteToTradeResult(args: GetQuoteArgs, data: QuoteData)
   const routes = computeRoutes(tokenInIsNative, tokenOutIsNative, data.route)
 
   const trade = new InterfaceTrade({
-    v2Routes:
+    v1Routes:
       routes
         ?.filter(
-          (r): r is typeof routes[0] & { routev2: NonNullable<typeof routes[0]['routev2']> } => r.routev2 !== null
+          (r): r is typeof routes[0] & { routev1: NonNullable<typeof routes[0]['routev2']> } => r.routev2 !== null
         )
-        .map(({ routev2, inputAmount, outputAmount }) => ({
-          routev2,
+        .map(({ routev1, inputAmount, outputAmount }) => ({
+          routev1,
           inputAmount,
           outputAmount,
         })) ?? [],
-    v3Routes:
+    v2Routes:
       routes
         ?.filter(
-          (r): r is typeof routes[0] & { routev3: NonNullable<typeof routes[0]['routev3']> } => r.routev3 !== null
+          (r): r is typeof routes[0] & { routev2: NonNullable<typeof routes[0]['routev3']> } => r.routev3 !== null
         )
-        .map(({ routev3, inputAmount, outputAmount }) => ({
-          routev3,
+        .map(({ routev2, inputAmount, outputAmount }) => ({
+          routev2,
           inputAmount,
           outputAmount,
         })) ?? [],
@@ -145,7 +145,8 @@ function isVersionedRoute<T extends V2PoolInRoute | V3PoolInRoute>(
 // TODO: deprecate this once we can use `NATIVE` as a string for native currencies and it can be imported from an SDK
 export function currencyAddressForSwapQuote(currency: Currency): string {
   if (currency.isNative) {
-    return isPolygonChain(currency.chainId) ? SwapRouterNativeAssets.MATIC : SwapRouterNativeAssets.ETH
+    return SwapRouterNativeAssets.ETH
+    // isPolygonChain(currency.chainId) ? SwapRouterNativeAssets.MATIC : SwapRouterNativeAssets.ETH
   }
 
   return currency.address

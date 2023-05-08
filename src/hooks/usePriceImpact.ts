@@ -1,4 +1,4 @@
-import { Percent } from '@uniswap/sdk-core'
+import { Percent } from '@pollum-io/sdk-core'
 import { useMemo } from 'react'
 import { InterfaceTrade } from 'state/routing/types'
 import { computeFiatValuePriceImpact } from 'utils/computeFiatValuePriceImpact'
@@ -16,9 +16,9 @@ export function usePriceImpact(trade?: InterfaceTrade): PriceImpact | undefined 
     const marketPriceImpact = trade ? computeRealizedPriceImpact(trade) : undefined
     return marketPriceImpact
       ? {
-          percent: marketPriceImpact,
-          warning: getPriceImpactWarning(marketPriceImpact),
-        }
+        percent: marketPriceImpact,
+        warning: getPriceImpactWarning(marketPriceImpact),
+      }
       : undefined
   }, [trade])
 }

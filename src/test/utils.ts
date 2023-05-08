@@ -1,5 +1,5 @@
-import { CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { FeeAmount, Pool, Route as RouteV3 } from '@uniswap/v3-sdk'
+import { CurrencyAmount, Token } from '@pollum-io/sdk-core'
+import { FeeAmount, Pool, Route as RouteV3 } from '@pollum-io/v2-sdk'
 
 // helper function to make amounts more readable
 export const amount = (raw: TemplateStringsArray) => (parseInt(raw[0]) * 1e6).toString()
@@ -9,7 +9,7 @@ export const DAI = new Token(1, '0x6B175474E89094C44Da98b954EedeAC495271d0F', 6,
 export const MKR = new Token(1, '0x9f8F72aA9304c8B593d555F12eF6589cC3A579A2', 6, 'MKR')
 
 type V3Route<In extends Token, Out extends Token> = {
-  routev3: RouteV3<In, Out>
+  routev2: RouteV3<In, Out>
   inputAmount: CurrencyAmount<In>
   outputAmount: CurrencyAmount<Out>
 }
@@ -19,7 +19,7 @@ export function buildSingleV3Route<In extends Token, Out extends Token>(
   outputAmount: CurrencyAmount<Out>
 ): V3Route<In, Out> {
   return {
-    routev3: new RouteV3(
+    routev2: new RouteV3(
       [buildV3Pool(inputAmount.currency, outputAmount.currency)],
       inputAmount.currency,
       outputAmount.currency
@@ -34,7 +34,7 @@ export function buildMultiV3Route<In extends Token, Out extends Token>(
   outputAmount: CurrencyAmount<Out>
 ): V3Route<In, Out> {
   return {
-    routev3: new RouteV3(
+    routev2: new RouteV3(
       [buildV3Pool(inputAmount.currency, MKR), buildV3Pool(MKR, outputAmount.currency)],
       inputAmount.currency,
       outputAmount.currency

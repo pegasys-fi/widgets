@@ -1,7 +1,7 @@
-import { MixedRoute, partitionMixedRouteByProtocol, Protocol } from '@uniswap/router-sdk'
-import { Currency, CurrencyAmount, Percent, Token } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
-import { Pool } from '@uniswap/v3-sdk'
+import { MixedRoute, partitionMixedRouteByProtocol, Protocol } from '@pollum-io/router-sdk'
+import { Currency, CurrencyAmount, Percent, Token } from '@pollum-io/sdk-core'
+import { Pair } from '@pollum-io/v1-sdk'
+import { Pool } from '@pollum-io/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { SUPPORTED_GAS_ESTIMATE_CHAIN_IDS } from 'constants/chains'
 import { L2_CHAIN_IDS } from 'constants/chains'
@@ -39,9 +39,9 @@ function guesstimateGas(trade: InterfaceTrade | undefined): number | undefined {
   if (!!trade) {
     let gas = 0
     for (const { route } of trade.swaps) {
-      if (route.protocol === Protocol.V2) {
+      if (route.protocol === Protocol.V1) {
         gas += V2_SWAP_BASE_GAS_ESTIMATE + route.pools.length * V2_SWAP_HOP_GAS_ESTIMATE
-      } else if (route.protocol === Protocol.V3) {
+      } else if (route.protocol === Protocol.V2) {
         // V3 gas costs scale on initialized ticks being crossed, but we don't have that data here.
         // We bake in some tick crossings into the base 100k cost.
         gas += V3_SWAP_BASE_GAS_ESTIMATE + route.pools.length * V3_SWAP_HOP_GAS_ESTIMATE

@@ -1,6 +1,7 @@
-import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
-import { CurrencyAmount, MaxUint256 } from '@uniswap/sdk-core'
-import { UNIVERSAL_ROUTER_ADDRESS } from '@uniswap/universal-router-sdk'
+// import { PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
+import { PERMIT2_ADDRESS } from '@pollum-io/universal-router-sdk'
+import { CurrencyAmount, MaxUint256 } from '@pollum-io/sdk-core'
+import { UNIVERSAL_ROUTER_ADDRESS } from '@pollum-io/universal-router-sdk'
 import { SupportedChainId } from 'constants/chains'
 import { UNI } from 'constants/tokens'
 import { useAddTransactionInfo, usePendingApproval } from 'hooks/transactions'
@@ -11,9 +12,9 @@ import { act, renderHook, waitFor } from 'test'
 
 import usePermit2Allowance, { AllowanceRequired, AllowanceState } from './usePermit2Allowance'
 
-const SPENDER = UNIVERSAL_ROUTER_ADDRESS(SupportedChainId.MAINNET)
+const SPENDER = UNIVERSAL_ROUTER_ADDRESS(SupportedChainId.ROLLUX_TESTNET)
 
-const TOKEN = UNI[SupportedChainId.MAINNET]
+const TOKEN = UNI[SupportedChainId.ROLLUX_TESTNET]
 const MAX_AMOUNT = CurrencyAmount.fromRawAmount(TOKEN, MaxUint256.toString())
 const ZERO_AMOUNT = CurrencyAmount.fromRawAmount(TOKEN, 0)
 

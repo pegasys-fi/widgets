@@ -1,4 +1,4 @@
-import { Currency } from '@uniswap/sdk-core'
+import { Currency } from '@pollum-io/sdk-core'
 import Row from 'components/Row'
 import TokenImg from 'components/TokenImg'
 import { BASES_TO_CHECK_TRADES_AGAINST } from 'constants/routing'
@@ -16,7 +16,7 @@ const activeCss = css`
   color: ${({ theme }) => theme.active};
 `
 
-const BaseWrapper = styled(Row)<{ active?: boolean }>`
+const BaseWrapper = styled(Row) <{ active?: boolean }>`
   border: 1px solid ${({ theme }) => theme.outline};
   border-radius: 1rem;
   color: ${({ theme, active }) => (active ? theme.active : theme.primary)};

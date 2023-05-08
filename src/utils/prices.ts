@@ -1,6 +1,6 @@
-import { Fraction, Percent } from '@uniswap/sdk-core'
-import { Pair } from '@uniswap/v2-sdk'
-import { FeeAmount, Pool } from '@uniswap/v3-sdk'
+import { Fraction, Percent } from '@pollum-io/sdk-core'
+import { Pair } from '@pollum-io/v1-sdk'
+import { FeeAmount, Pool } from '@pollum-io/v2-sdk'
 import {
   ALLOWED_PRICE_IMPACT_HIGH,
   ALLOWED_PRICE_IMPACT_LOW,

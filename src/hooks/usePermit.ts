@@ -1,9 +1,9 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { splitSignature } from '@ethersproject/bytes'
-import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
+import { Currency, CurrencyAmount } from '@pollum-io/sdk-core'
 import { useWeb3React } from '@web3-react/core'
-import { SupportedChainId } from 'constants/chains'
-import { DAI, UNI, USDC_MAINNET } from 'constants/tokens'
+// import { SupportedChainId } from 'constants/chains'
+// import { DAI, UNI, USDC_MAINNET } from 'constants/tokens'
 import { useSingleCallResult } from 'hooks/multicall'
 import JSBI from 'jsbi'
 import { useMemo, useState } from 'react'
@@ -32,25 +32,25 @@ const PERMITTABLE_TOKENS: {
     [checksummedTokenAddress: string]: PermitInfo
   }
 } = {
-  [SupportedChainId.MAINNET]: {
-    [USDC_MAINNET.address]: { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
-    [DAI.address]: { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' },
-    [UNI[SupportedChainId.MAINNET].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
-  },
-  [SupportedChainId.RINKEBY]: {
-    '0xc7AD46e0b8a400Bb3C915120d284AafbA8fc4735': { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' },
-    [UNI[SupportedChainId.RINKEBY].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
-  },
-  [SupportedChainId.ROPSTEN]: {
-    [UNI[SupportedChainId.ROPSTEN].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
-    '0x07865c6E87B9F70255377e024ace6630C1Eaa37F': { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
-  },
-  [SupportedChainId.GOERLI]: {
-    [UNI[SupportedChainId.GOERLI].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
-  },
-  [SupportedChainId.KOVAN]: {
-    [UNI[SupportedChainId.KOVAN].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
-  },
+  // [SupportedChainId.MAINNET]: {
+  //   [USDC_MAINNET.address]: { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
+  //   [DAI.address]: { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' },
+  //   [UNI[SupportedChainId.MAINNET].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+  // },
+  // [SupportedChainId.RINKEBY]: {
+  //   '0xc7AD46e0b8a400Bb3C915120d284AafbA8fc4735': { type: PermitType.ALLOWED, name: 'Dai Stablecoin', version: '1' },
+  //   [UNI[SupportedChainId.RINKEBY].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+  // },
+  // [SupportedChainId.ROPSTEN]: {
+  //   [UNI[SupportedChainId.ROPSTEN].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+  //   '0x07865c6E87B9F70255377e024ace6630C1Eaa37F': { type: PermitType.AMOUNT, name: 'USD Coin', version: '2' },
+  // },
+  // [SupportedChainId.GOERLI]: {
+  //   [UNI[SupportedChainId.GOERLI].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+  // },
+  // [SupportedChainId.KOVAN]: {
+  //   [UNI[SupportedChainId.KOVAN].address]: { type: PermitType.AMOUNT, name: 'Uniswap' },
+  // },
 }
 
 export enum PermitState {
@@ -180,31 +180,31 @@ export function usePermit(
 
         const message = allowed
           ? {
-              holder: account,
-              spender,
-              allowed,
-              nonce: nonceNumber,
-              expiry: signatureDeadline,
-            }
+            holder: account,
+            spender,
+            allowed,
+            nonce: nonceNumber,
+            expiry: signatureDeadline,
+          }
           : {
-              owner: account,
-              spender,
-              value,
-              nonce: nonceNumber,
-              deadline: signatureDeadline,
-            }
+            owner: account,
+            spender,
+            value,
+            nonce: nonceNumber,
+            deadline: signatureDeadline,
+          }
         const domain = permitInfo.version
           ? {
-              name: permitInfo.name,
-              version: permitInfo.version,
-              verifyingContract: tokenAddress,
-              chainId,
-            }
+            name: permitInfo.name,
+            version: permitInfo.version,
+            verifyingContract: tokenAddress,
+            chainId,
+          }
           : {
-              name: permitInfo.name,
-              verifyingContract: tokenAddress,
-              chainId,
-            }
+            name: permitInfo.name,
+            verifyingContract: tokenAddress,
+            chainId,
+          }
         const data = JSON.stringify({
           types: {
             EIP712Domain: permitInfo.version ? EIP712_DOMAIN_TYPE : EIP712_DOMAIN_TYPE_NO_VERSION,

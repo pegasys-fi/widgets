@@ -1,7 +1,7 @@
 import { BaseProvider } from '@ethersproject/providers'
-import { Trade } from '@uniswap/router-sdk'
-import { Currency, Token, TradeType } from '@uniswap/sdk-core'
-import type { ChainId } from '@uniswap/smart-order-router'
+import { Trade } from '@pollum-io/router-sdk'
+import { Currency, Token, TradeType } from '@pollum-io/sdk-core'
+import type { ChainId } from '@pollum-io/smart-order-router'
 import { QuoteType, RouterPreference } from 'hooks/routing/types'
 import { OnSwapQuote } from 'state/swap'
 
@@ -95,26 +95,26 @@ export interface QuoteData {
 
 export type QuoteResult =
   | {
-      state: QuoteState.INITIALIZED | QuoteState.NOT_FOUND
-      data?: undefined
-    }
+    state: QuoteState.INITIALIZED | QuoteState.NOT_FOUND
+    data?: undefined
+  }
   | {
-      state: QuoteState.SUCCESS
-      data: QuoteData
-    }
+    state: QuoteState.SUCCESS
+    data: QuoteData
+  }
 
 export type TradeResult =
   | {
-      state: QuoteState.INITIALIZED | QuoteState.NOT_FOUND
-      trade?: undefined
-      gasUseEstimateUSD?: undefined
-      blockNumber?: undefined
-    }
+    state: QuoteState.INITIALIZED | QuoteState.NOT_FOUND
+    trade?: undefined
+    gasUseEstimateUSD?: undefined
+    blockNumber?: undefined
+  }
   | {
-      state: QuoteState.SUCCESS
-      trade: InterfaceTrade
-      gasUseEstimateUSD: string
-      blockNumber: string
-    }
+    state: QuoteState.SUCCESS
+    trade: InterfaceTrade
+    gasUseEstimateUSD: string
+    blockNumber: string
+  }
 
-export class InterfaceTrade extends Trade<Currency, Currency, TradeType> {}
+export class InterfaceTrade extends Trade<Currency, Currency, TradeType> { }

@@ -1,5 +1,5 @@
 import { BaseQueryFn, createApi, FetchBaseQueryError, SkipToken, skipToken } from '@reduxjs/toolkit/query/react'
-import { Protocol } from '@uniswap/router-sdk'
+import { Protocol } from '@pollum-io/router-sdk'
 import { WidgetError, WidgetPromise } from 'errors'
 import { RouterPreference } from 'hooks/routing/types'
 import ms from 'ms.macro'
@@ -10,7 +10,7 @@ import { serializeGetQuoteArgs, serializeGetQuoteQueryArgs } from './args'
 import { GetQuoteArgs, QuoteData, QuoteState, TradeResult } from './types'
 import { transformQuoteToTradeResult } from './utils'
 
-const protocols: Protocol[] = [Protocol.V2, Protocol.V3, Protocol.MIXED]
+const protocols: Protocol[] = [Protocol.V1, Protocol.V2, Protocol.MIXED]
 
 // routing API quote query params: https://github.com/Uniswap/routing-api/blob/main/lib/handlers/quote/schema/quote-schema.ts
 const DEFAULT_QUERY_PARAMS = {
@@ -81,7 +81,7 @@ export const routing = createApi({
               let data: string | Record<string, unknown> = await response.text()
               try {
                 data = JSON.parse(data)
-              } catch {}
+              } catch { }
 
               // NO_ROUTE should be treated as a valid response to prevent retries.
               if (typeof data === 'object' && data.errorCode === 'NO_ROUTE') {

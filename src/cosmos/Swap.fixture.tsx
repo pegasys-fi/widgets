@@ -1,4 +1,4 @@
-import { tokens } from '@uniswap/default-token-list'
+import { tokens } from '@pollum-io/default-token-list'
 import { TokenInfo } from '@uniswap/token-lists'
 import {
   darkTheme,
@@ -7,13 +7,13 @@ import {
   lightTheme,
   SupportedChainId,
   SwapWidget,
-} from '@uniswap/widgets'
+} from '@pollum-io/widgets'
 import Row from 'components/Row'
 import { CHAIN_NAMES_TO_IDS } from 'constants/chains'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useValue } from 'react-cosmos/fixture'
 
-import { DAI, USDC_MAINNET } from '../constants/tokens'
+import { DAI_ROLLUX_TESTNET, USDC_ROLLUX_TESTNET } from '../constants/tokens'
 import EventFeed, { Event, HANDLERS } from './EventFeed'
 import useOption from './useOption'
 import useProvider from './useProvider'
@@ -26,7 +26,7 @@ const TOKEN_WITH_NO_LOGO = {
   address: '0x3819f64f282bf135d62168C1e513280dAF905e06',
 }
 
-const mainnetTokens = tokens.filter((token) => token.chainId === SupportedChainId.MAINNET)
+const mainnetTokens = tokens.filter((token) => token.chainId === SupportedChainId.ROLLUX_TESTNET)
 const tokenLists: Record<string, TokenInfo[] | string> = {
   Default: tokens,
   Extended: 'https://extendedtokens.uniswap.org/',
@@ -55,8 +55,8 @@ function Fixture() {
   // TODO(zzmp): Changing defaults has no effect if done after the first render.
   const currencies: Record<string, string> = {
     Native: 'NATIVE',
-    DAI: DAI.address,
-    USDC: USDC_MAINNET.address,
+    DAI: DAI_ROLLUX_TESTNET.address,
+    USDC: DAI_ROLLUX_TESTNET.address,
   }
   const defaultInputToken = useOption('defaultInputToken', { options: currencies, defaultValue: 'Native' })
   const [defaultInputAmount] = useValue('defaultInputAmount', { defaultValue: 0 })

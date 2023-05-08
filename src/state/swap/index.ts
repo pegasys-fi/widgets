@@ -1,5 +1,5 @@
-import { Currency, TradeType } from '@uniswap/sdk-core'
-import { FeeOptions } from '@uniswap/v3-sdk'
+import { Currency, TradeType } from '@pollum-io/sdk-core'
+import { FeeOptions } from '@pollum-io/v2-sdk'
 import { SupportedChainId } from 'constants/chains'
 import { nativeOnChain } from 'constants/tokens'
 import { atom } from 'jotai'
@@ -39,7 +39,7 @@ export interface Swap {
 const initialSwap: Swap = {
   type: TradeType.EXACT_INPUT,
   amount: '',
-  [Field.INPUT]: nativeOnChain(SupportedChainId.MAINNET),
+  [Field.INPUT]: nativeOnChain(SupportedChainId.ROLLUX_TESTNET),
 }
 
 export const controlledAtom = atom<Swap | undefined>(undefined)

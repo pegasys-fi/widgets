@@ -1,5 +1,5 @@
-import { SupportedChainId, TradeType } from '@uniswap/sdk-core'
-import { DAI, ExtendedEther, USDC_MAINNET, WRAPPED_NATIVE_CURRENCY } from 'constants/tokens'
+import { SupportedChainId, TradeType } from '@pollum-io/sdk-core'
+import { DAI_ROLLUX_TESTNET, ExtendedEther, USDC_ROLLUX_TESTNET, WRAPPED_NATIVE_CURRENCY } from 'constants/tokens'
 import { SwapInfoProvider } from 'hooks/swap/useSwapInfo'
 import Module from 'module'
 import { Field, stateAtom, Swap } from 'state/swap'
@@ -25,8 +25,8 @@ export function getInitialTradeState(trade: Partial<Swap> = {}) {
   return {
     type: TradeType.EXACT_INPUT,
     amount: '',
-    [Field.INPUT]: DAI,
-    [Field.OUTPUT]: USDC_MAINNET,
+    [Field.INPUT]: DAI_ROLLUX_TESTNET,
+    [Field.OUTPUT]: USDC_ROLLUX_TESTNET,
     ...trade,
   }
 }
@@ -146,8 +146,8 @@ describe('Toolbar', () => {
             stateAtom,
             getInitialTradeState({
               amount: '1',
-              [Field.INPUT]: ExtendedEther.onChain(SupportedChainId.MAINNET),
-              [Field.OUTPUT]: WRAPPED_NATIVE_CURRENCY[SupportedChainId.MAINNET],
+              [Field.INPUT]: ExtendedEther.onChain(SupportedChainId.ROLLUX),
+              [Field.OUTPUT]: WRAPPED_NATIVE_CURRENCY[SupportedChainId.ROLLUX],
             }),
           ],
         ],

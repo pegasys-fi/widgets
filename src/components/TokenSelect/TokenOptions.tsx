@@ -1,4 +1,4 @@
-import { Currency } from '@uniswap/sdk-core'
+import { Currency } from '@pollum-io/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import useCurrencyBalance from 'hooks/useCurrencyBalance'
 import useNativeEvent from 'hooks/useNativeEvent'
@@ -39,8 +39,8 @@ const TokenButton = styled(BaseButton)`
 const ITEM_SIZE = 56
 const MIN_VISIBLE_TOKENS = 6
 type ItemData = Currency[]
-interface FixedSizeTokenList extends FixedSizeList<ItemData>, ComponentClass<FixedSizeListProps<ItemData>> {}
-const TokenList = styled(FixedSizeList as unknown as FixedSizeTokenList)<{
+interface FixedSizeTokenList extends FixedSizeList<ItemData>, ComponentClass<FixedSizeListProps<ItemData>> { }
+const TokenList = styled(FixedSizeList as unknown as FixedSizeTokenList) <{
   hover: number
   scrollbar?: ReturnType<typeof useScrollbar>
 }>`

@@ -1,7 +1,7 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { SwapRouter } from '@uniswap/router-sdk'
-import { Percent } from '@uniswap/sdk-core'
-import { FeeOptions } from '@uniswap/v3-sdk'
+import { SwapRouter } from '@pollum-io/router-sdk'
+import { Percent } from '@pollum-io/sdk-core'
+import { FeeOptions } from '@pollum-io/v2-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { SWAP_ROUTER_ADDRESSES } from 'constants/addresses'
 import { useMemo } from 'react'
@@ -52,23 +52,23 @@ export function useSwapCallArguments(
       deadlineOrPreviousBlockhash: deadline.toString(),
       ...(signatureData
         ? {
-            inputTokenPermit:
-              'allowed' in signatureData
-                ? {
-                    expiry: signatureData.deadline,
-                    nonce: signatureData.nonce,
-                    s: signatureData.s,
-                    r: signatureData.r,
-                    v: signatureData.v as any,
-                  }
-                : {
-                    deadline: signatureData.deadline,
-                    amount: signatureData.amount,
-                    s: signatureData.s,
-                    r: signatureData.r,
-                    v: signatureData.v as any,
-                  },
-          }
+          inputTokenPermit:
+            'allowed' in signatureData
+              ? {
+                expiry: signatureData.deadline,
+                nonce: signatureData.nonce,
+                s: signatureData.s,
+                r: signatureData.r,
+                v: signatureData.v as any,
+              }
+              : {
+                deadline: signatureData.deadline,
+                amount: signatureData.amount,
+                s: signatureData.s,
+                r: signatureData.r,
+                v: signatureData.v as any,
+              },
+        }
         : {}),
     }
     const { value, calldata } = SwapRouter.swapCallParameters(trade, swapOptions)

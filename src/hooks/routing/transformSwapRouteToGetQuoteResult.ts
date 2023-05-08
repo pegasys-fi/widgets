@@ -1,5 +1,5 @@
-import { Protocol } from '@uniswap/router-sdk'
-import type { SwapRoute } from '@uniswap/smart-order-router'
+import { Protocol } from '@pollum-io/router-sdk'
+import type { SwapRoute } from '@pollum-io/smart-order-router'
 import { QuoteResult, QuoteState, V2PoolInRoute, V3PoolInRoute } from 'state/routing/types'
 import { isExactInput } from 'utils/tradeType'
 
@@ -22,7 +22,7 @@ export function transformSwapRouteToGetQuoteResult({
   for (const subRoute of route) {
     const { amount, quote, tokenPath } = subRoute
 
-    if (subRoute.protocol === Protocol.V3) {
+    if (subRoute.protocol === Protocol.V2) {
       const pools = subRoute.route.pools
       const curRoute: V3PoolInRoute[] = []
       for (let i = 0; i < pools.length; i++) {
@@ -64,7 +64,7 @@ export function transformSwapRouteToGetQuoteResult({
       }
 
       routeResponse.push(curRoute)
-    } else if (subRoute.protocol === Protocol.V2) {
+    } else if (subRoute.protocol === Protocol.V1) {
       const pools = subRoute.route.pairs
       const curRoute: V2PoolInRoute[] = []
       for (let i = 0; i < pools.length; i++) {

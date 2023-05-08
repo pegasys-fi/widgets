@@ -1,6 +1,6 @@
 import { arrayify } from '@ethersproject/bytes'
 import { parseBytes32String } from '@ethersproject/strings'
-import { Currency, Token } from '@uniswap/sdk-core'
+import { Currency, Token } from '@pollum-io/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import { TOKEN_SHORTHANDS } from 'constants/tokens'
 import { NEVER_RELOAD, useSingleCallResult } from 'hooks/multicall'
@@ -21,8 +21,8 @@ function parseStringOrBytes32(str: string | undefined, bytes32: string | undefin
     ? str
     : // need to check for proper bytes string and valid terminator
     bytes32 && BYTES32_REGEX.test(bytes32) && arrayify(bytes32)[31] === 0
-    ? parseBytes32String(bytes32)
-    : defaultValue
+      ? parseBytes32String(bytes32)
+      : defaultValue
 }
 
 /**
