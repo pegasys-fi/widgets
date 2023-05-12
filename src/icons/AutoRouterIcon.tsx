@@ -18,9 +18,9 @@ export default function AutoRouterIcon({ className, id }: { className?: string; 
     >
       <defs>
         <linearGradient id={componentId} x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(95)">
-          <stop id="stop1" offset="0" stopColor="#2274E2" />
+          <stop id="stop1" offset="0" stopColor="#19EBCE" />
           <stop id="stop1" offset="0.5" stopColor="#2274E2" />
-          <stop id="stop2" offset="1" stopColor="#3FB672" />
+          <stop id="stop2" offset="1" stopColor="#8A15E6" />
         </linearGradient>
       </defs>
       <path

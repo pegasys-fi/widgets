@@ -86,7 +86,6 @@ interface FieldWrapperProps {
   maxAmount?: string
   approved?: boolean
   fiatValueChange?: PriceImpact
-  subheader: string
 }
 
 export function FieldWrapper({
@@ -95,7 +94,6 @@ export function FieldWrapper({
   approved,
   fiatValueChange,
   className,
-  subheader,
 }: FieldWrapperProps & { className?: string }) {
   const {
     [field]: { balance, amount: currencyAmount, usdc },
@@ -146,9 +144,6 @@ export function FieldWrapper({
       onClick={onClick}
       className={className}
     >
-      <Row pad={1 /* rem */}>
-        <ThemedText.Subhead2 color={'secondary'}>{subheader}</ThemedText.Subhead2>
-      </Row>
       <TokenInput
         ref={setInput}
         field={field}
@@ -206,11 +201,6 @@ export default function Input() {
   }, [balance, currencyAmount])
 
   return (
-    <FieldWrapper
-      field={Field.INPUT}
-      maxAmount={maxAmount}
-      approved={approvalState === SwapApprovalState.APPROVED}
-      subheader={t`You pay`}
-    />
+    <FieldWrapper field={Field.INPUT} maxAmount={maxAmount} approved={approvalState === SwapApprovalState.APPROVED} />
   )
 }

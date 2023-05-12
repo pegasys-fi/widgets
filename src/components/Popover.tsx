@@ -21,9 +21,9 @@ export function PopoverBoundaryProvider({
 
 const PopoverContainer = styled.div<{ show: boolean }>`
   ${globalFontStyles}
-  background-color: ${({ theme }) => theme.dialog};
-  border: 1px solid ${({ theme }) => theme.outline};
+  background-color: ${({ theme }) => theme.container};
   border-radius: 0.5rem;
+  box-shadow: ${({ theme }) => theme.deepShadow};
   opacity: ${(props) => (props.show ? 1 : 0)};
   padding: 0.75rem;
   transition: visibility ${AnimationSpeed.Medium} linear, opacity ${AnimationSpeed.Medium} linear;

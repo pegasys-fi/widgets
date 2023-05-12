@@ -1,6 +1,4 @@
 import { Trans } from '@lingui/macro'
-import BrandedFooter from 'components/BrandedFooter'
-import Wallet from 'components/ConnectWallet'
 import { SwapInfoProvider } from 'hooks/swap/useSwapInfo'
 import useSyncController, { SwapController } from 'hooks/swap/useSyncController'
 import useSyncConvenienceFee, { FeeOptions } from 'hooks/swap/useSyncConvenienceFee'
@@ -8,7 +6,6 @@ import useSyncSwapEventHandlers, { SwapEventHandlers } from 'hooks/swap/useSyncS
 import useSyncSwapRouterUrl from 'hooks/swap/useSyncSwapRouterUrl'
 import useSyncTokenDefaults, { TokenDefaults } from 'hooks/swap/useSyncTokenDefaults'
 import { usePendingTransactions } from 'hooks/transactions'
-import { useBrandedFooter } from 'hooks/useSyncFlags'
 import { useAtom } from 'jotai'
 import { useMemo, useState } from 'react'
 import { displayTxHashAtom } from 'state/swap'
@@ -50,7 +47,6 @@ export default function Swap(props: SwapProps) {
     <>
       <SwapInfoProvider>
         <Header title={<Trans>Swap</Trans>}>
-          <Wallet disabled={props.hideConnectionUI} />
           <Settings />
         </Header>
         <div ref={setWrapper}>
@@ -59,7 +55,6 @@ export default function Swap(props: SwapProps) {
             <ReverseButton />
             <Output />
             <Toolbar />
-            {useBrandedFooter() && <BrandedFooter />}
           </PopoverBoundaryProvider>
         </div>
       </SwapInfoProvider>
