@@ -1,6 +1,10 @@
 export interface Colors {
   // surface
   accent: string
+  accentActive: string
+  accentActionSoft: string
+  accentActiveSoft: string
+
   accentSoft: string
   container: string
   module: string
@@ -8,6 +12,7 @@ export interface Colors {
   outline: string
   dialog: string
   scrim: string
+  backgroundScrim: string
 
   // text
   primary: string
