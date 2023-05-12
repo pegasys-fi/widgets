@@ -34,6 +34,7 @@ export interface Colors {
   networkDefaultShadow: string
   deepShadow: string
 
+  loadingGif: string
   currentColor: 'currentColor'
 }
 

@@ -1,14 +1,16 @@
 import { Trans } from '@lingui/macro'
 import { Placement } from '@popperjs/core'
 import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
+import LoadingGifLight from 'assets/images/lightLoading.gif'
 import Row from 'components/Row'
 import Tooltip from 'components/Tooltip'
 import { loadingCss } from 'css/loading'
 import { useIsWideWidget, useWidgetWidth } from 'hooks/useWidgetWidth'
 import { AlertTriangle, ChevronDown, Icon, Info, LargeIcon, Spinner } from 'icons'
-import { ReactNode, useCallback } from 'react'
+import { LoaderGif } from 'icons/LoadingSpinner'
+import { ReactElement, ReactNode, useCallback } from 'react'
 import { InterfaceTrade } from 'state/routing/types'
-import styled, { css } from 'styled-components/macro'
+import styled, { css, useTheme } from 'styled-components/macro'
 import { AnimationSpeed, Color, ThemedText } from 'theme'
 import { WIDGET_BREAKPOINTS } from 'theme/breakpoints'
 
@@ -46,12 +48,13 @@ interface CaptionTooltip {
 
 interface CaptionProps {
   icon?: Icon | null
+  gif?: ReactElement
   caption: ReactNode
   color?: Color
   tooltip?: CaptionTooltip
 }
 
-function Caption({ icon: Icon, caption, color = 'secondary', tooltip }: CaptionProps) {
+function Caption({ icon: Icon, caption, color = 'secondary', tooltip, gif }: CaptionProps) {
   return (
     <CaptionRow gap={0.5} shrink={0}>
       {tooltip ? (
@@ -61,15 +64,18 @@ function Caption({ icon: Icon, caption, color = 'secondary', tooltip }: CaptionP
       ) : (
         Icon && <LargeIcon icon={Icon} color={color} />
       )}
+      <>{gif}</>
       <ThemedText.Body2 color={color}>{caption}</ThemedText.Body2>
     </CaptionRow>
   )
 }
 
 export function Connecting() {
+  const theme = useTheme()
+
   return (
     <Caption
-      icon={Spinner}
+      gif={<LoaderGif gif={theme.loadingGif === 'light' ? LoadingGifLight : Loading} />}
       caption={
         <Loading>
           <Trans>Connecting…</Trans>
@@ -88,10 +94,11 @@ export function MissingInputs() {
 }
 
 export function LoadingTrade({ gasUseEstimateUSD }: TradeTooltip) {
+  const theme = useTheme()
   return (
     <>
       <Caption
-        icon={Spinner}
+        gif={<LoaderGif gif={theme.loadingGif === 'light' ? LoadingGifLight : Loading} />}
         color="primary"
         caption={
           <Loading>

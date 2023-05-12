@@ -106,12 +106,12 @@ function TokenOption({ index, value, style }: TokenOptionProps) {
         <Row gap={0.5}>
           <TokenImg token={value} size={2.25} />
           <Column flex gap={0.125} align="flex-start">
-            <ThemedText.Subhead1>{value.symbol}</ThemedText.Subhead1>
+            <ThemedText.Subhead1 color="primary">{value.symbol}</ThemedText.Subhead1>
             <ThemedText.Body2 color="secondary">{value.name}</ThemedText.Body2>
           </Column>
         </Row>
         <TokenBalance isLoading={Boolean(account) && !balance}>
-          <ThemedText.Subhead1>
+          <ThemedText.Subhead1 color="primary">
             {balance?.greaterThan(0) && formatCurrencyAmount({ amount: balance })}
           </ThemedText.Subhead1>
         </TokenBalance>

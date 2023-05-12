@@ -72,6 +72,7 @@ export const lightTheme: Colors = {
   backgroundScrim: opacify(60, gray900),
   accentActionSoft: opacify(12, purpleMain),
   accentActiveSoft: opacify(24, blue400),
+  loadingGif: 'light',
 }
 
 export const darkTheme: Colors = {
@@ -105,6 +106,7 @@ export const darkTheme: Colors = {
   backgroundScrim: opacify(72, deep),
   accentActionSoft: opacify(24, blueButton),
   accentActiveSoft: opacify(24, cyanText),
+  loadingGif: 'dark',
 }
 
 /**
