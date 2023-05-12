@@ -18,8 +18,8 @@ export * as ThemedText from './type'
 const white = 'hsl(0, 0%, 100%)'
 const black = 'hsl(0, 0%, 0%)'
 
-const brandLight = 'hsl(328, 97%, 53%)'
-const brandDark = 'hsl(221, 96%, 64%)'
+const brandLight = '#665EE1'
+const brandDark = '#00D9EF'
 
 const blueButton = '#153D6F'
 const deep = '#081120'

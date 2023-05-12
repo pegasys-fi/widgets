@@ -46,6 +46,8 @@ export function SettingsMenu() {
 }
 
 const SettingsButton = styled(IconButton)`
+  background: '#ffff';
+  background-color: aliceblue;
   // Don't rotate back when un-hovering so that clicking (and losing hover due to the modal backdrop) doesn't cause unintentional back-rotation.
   ${SettingsIcon}:hover {
     transform: rotate(45deg);
