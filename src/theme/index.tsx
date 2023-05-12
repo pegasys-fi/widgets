@@ -20,12 +20,15 @@ const black = 'hsl(0, 0%, 0%)'
 
 const brandLight = 'hsl(328, 97%, 53%)'
 const brandDark = 'hsl(221, 96%, 64%)'
+
 const blueButton = '#153D6F'
 const deep = '#081120'
+const input = '#0B172C'
 const gray900 = '#171923'
 const cyanText = '#00D9EF'
 const purpleMain = '#665EE1'
 const blue400 = '#4299E1'
+const gray50 = '#F7FAFC'
 
 export const brand = brandLight
 
@@ -43,7 +46,7 @@ export const lightTheme: Colors = {
   accent: brandLight,
   accentSoft: rgba(brandLight, 0.24),
   container: 'hsl(0, 0%, 100%)',
-  module: 'hsl(231, 54%, 97%)',
+  module: gray50,
   interactive: 'hsl(227, 70%, 95%)',
   outline: 'hsla(225, 18%, 44%, 0.24)',
   dialog: white,
@@ -76,7 +79,7 @@ export const darkTheme: Colors = {
   accent: blueButton,
   accentSoft: rgba(brandDark, 0.24),
   container: 'hsla(224, 37%, 8%, 1)',
-  module: 'hsl(222, 37%, 12%)',
+  module: input,
   interactive: 'hsla(223, 28%, 22%, 1)',
   outline: 'hsl(224, 33%, 16%)',
   dialog: black,

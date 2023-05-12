@@ -1,6 +1,7 @@
 import { useSwapInfo, useSwitchSwapCurrencies } from 'hooks/swap'
-import { LargeIcon, Reverse } from 'icons'
-import styled from 'styled-components/macro'
+// eslint-disable-next-line no-restricted-imports
+import { RefreshCcw } from 'react-feather'
+import styled, { useTheme } from 'styled-components/macro'
 import { Layer } from 'theme'
 
 import Button from '../Button'
@@ -31,11 +32,12 @@ export default function ReverseButton() {
   const { error } = useSwapInfo()
   const isDisabled = error !== undefined
   const switchCurrencies = useSwitchSwapCurrencies()
+  const theme = useTheme()
 
   return (
     <Underlayer>
       <StyledReverseButton disabled={isDisabled} onClick={switchCurrencies}>
-        <LargeIcon icon={Reverse} />
+        <RefreshCcw color={theme.accentActive} size={16} />
       </StyledReverseButton>
     </Underlayer>
   )

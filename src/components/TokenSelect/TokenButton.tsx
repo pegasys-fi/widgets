@@ -11,7 +11,7 @@ import TokenImg from '../TokenImg'
 
 const StyledTokenButton = styled(Button)<{ approved?: boolean }>`
   border-radius: ${({ theme }) => theme.borderRadius.medium}rem;
-  min-height: 2rem;
+  min-height: 1.75rem;
   padding: 0.25rem 0.5rem 0.25rem 0.25rem;
 
   :enabled {
@@ -42,31 +42,34 @@ interface TokenButtonProps {
 }
 
 export default function TokenButton({ value, approved, disabled, onClick }: TokenButtonProps) {
-  return (
+  return value ? (
     <StyledTokenButton
       onClick={onClick}
-      color={value ? 'interactive' : 'accent'}
       approved={approved}
       disabled={disabled}
       data-testid="token-select"
+      color="module"
     >
       <TokenButtonRow empty={!value} flex gap={0.4} flow="nowrap">
-        {value ? (
-          <>
-            <Logo currency={value} symbol={value.symbol} />
-            <ThemedText.ButtonLarge color={'currentColor'}>
-              <span>{value.symbol}</span>
-            </ThemedText.ButtonLarge>
-          </>
-        ) : (
-          <ThemedText.ButtonLarge
-            color={'onAccent'}
-            style={{ maxWidth: '10rem', textOverflow: 'ellipsis', overflow: 'hidden' }}
-          >
-            <Trans>Select token</Trans>
+        <>
+          <Logo currency={value} symbol={value.symbol} />
+          <ThemedText.ButtonLarge color={'primary'}>
+            <span>{value.symbol}</span>
           </ThemedText.ButtonLarge>
-        )}
-        <ChevronDown strokeWidth={2} color={value ? 'primary' : 'onAccent'} />
+        </>
+        <ChevronDown strokeWidth={2} color={value ? 'primary' : 'accentActive'} />
+      </TokenButtonRow>
+    </StyledTokenButton>
+  ) : (
+    <StyledTokenButton onClick={onClick} approved={approved} disabled={disabled} data-testid="token-select">
+      <TokenButtonRow empty={!value} flex gap={0.4} flow="nowrap">
+        <ThemedText.ButtonLarge
+          color={'accentActive'}
+          style={{ maxWidth: '10rem', textOverflow: 'ellipsis', overflow: 'hidden', background: 'accentActionSoft' }}
+        >
+          <Trans>Select token</Trans>
+        </ThemedText.ButtonLarge>
+        <ChevronDown strokeWidth={2} color={value ? 'primary' : 'accentActive'} />
       </TokenButtonRow>
     </StyledTokenButton>
   )
