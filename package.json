@@ -3,7 +3,7 @@
   "description": "Pegasys Interface",
   "homepage": "https://github.com/pegasys-fi/widgets#readme",
   "repository": "https://github.com/pegasys-fi/widgets",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publishConfig": {
     "access": "public"
   },

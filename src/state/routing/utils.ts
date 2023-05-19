@@ -19,12 +19,12 @@ export function computeRoutes(
   routes: QuoteData['route']
 ):
   | {
-    routev2: V3Route<Currency, Currency> | null
-    routev1: V2Route<Currency, Currency> | null
-    mixedRoute: MixedRouteSDK<Currency, Currency> | null
-    inputAmount: CurrencyAmount<Currency>
-    outputAmount: CurrencyAmount<Currency>
-  }[]
+      routev2: V3Route<Currency, Currency> | null
+      routev1: V2Route<Currency, Currency> | null
+      mixedRoute: MixedRouteSDK<Currency, Currency> | null
+      inputAmount: CurrencyAmount<Currency>
+      outputAmount: CurrencyAmount<Currency>
+    }[]
   | undefined {
   if (routes.length === 0) return []
 

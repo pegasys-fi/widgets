@@ -30,7 +30,6 @@ export const DAI_ROLLUX = new Token(
 export const USDC: { [chainId in SupportedChainId]: Token } = {
   [SupportedChainId.ROLLUX_TANENBAUM]: USDC_ROLLUX_TANENBAUM,
   [SupportedChainId.ROLLUX]: USDC_ROLLUX,
-
 }
 
 export const USDT_ROLLUX = new Token(
@@ -74,7 +73,6 @@ export const WRAPPED_NATIVE_CURRENCY: { [chainId: number]: Token | undefined } =
     'WSYS',
     'Wrapped Syscoin'
   ),
-
 }
 export class ExtendedEther extends Ether {
   public get wrapped(): Token {
@@ -92,7 +90,6 @@ export class ExtendedEther extends Ether {
 
 const cachedNativeCurrency: { [chainId: number]: NativeCurrency | Token } = {}
 export function nativeOnChain(chainId: number): NativeCurrency | Token {
-
   const nativeCurrency: NativeCurrency | Token = ExtendedEther.onChain(chainId)
 
   return (cachedNativeCurrency[chainId] = nativeCurrency)

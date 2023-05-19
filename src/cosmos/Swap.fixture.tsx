@@ -18,8 +18,6 @@ import EventFeed, { Event, HANDLERS } from './EventFeed'
 import useOption from './useOption'
 import useProvider from './useProvider'
 
-
-
 const mainnetTokens = tokens.filter((token) => token.chainId === SupportedChainId.ROLLUX)
 const tokenLists: Record<string, TokenInfo[] | string> = {
   Default: tokens,
@@ -77,7 +75,9 @@ function Fixture() {
 
   const tokenList = useOption('tokenList', { options: tokenLists, defaultValue: 'Default', nullable: false })
 
-  const [routerUrl] = useValue('routerUrl', { defaultValue: 'https://a0cxzj8dg5.execute-api.us-east-2.amazonaws.com/prod/' })
+  const [routerUrl] = useValue('routerUrl', {
+    defaultValue: 'https://a0cxzj8dg5.execute-api.us-east-2.amazonaws.com/prod/',
+  })
 
   const dialogAnimation = useOption('dialogAnimation', {
     defaultValue: DialogAnimationType.FADE,

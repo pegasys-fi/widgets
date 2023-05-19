@@ -1,5 +1,5 @@
 import { SupportedChainId, TradeType } from '@pollum-io/sdk-core'
-import { DAI_ROLLUX, ExtendedEther, USDC, USDC_ROLLUX, WRAPPED_NATIVE_CURRENCY } from 'constants/tokens'
+import { DAI_ROLLUX, ExtendedEther, USDC_ROLLUX, WRAPPED_NATIVE_CURRENCY } from 'constants/tokens'
 import { SwapInfoProvider } from 'hooks/swap/useSwapInfo'
 import Module from 'module'
 import { Field, stateAtom, Swap } from 'state/swap'

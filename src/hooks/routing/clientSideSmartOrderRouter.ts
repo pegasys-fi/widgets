@@ -3,7 +3,7 @@ import { BigintIsh, CurrencyAmount, Token, TradeType } from '@pollum-io/sdk-core
 import type { AlphaRouterConfig } from '@pollum-io/smart-order-router'
 // This file is lazy-loaded, so the import of smart-order-router is intentional.
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
-import { AlphaRouter, ChainId, routeAmountsToString, StaticV2SubgraphProvider } from '@pollum-io/smart-order-router'
+import { AlphaRouter, ChainId, routeAmountsToString } from '@pollum-io/smart-order-router'
 import { nativeOnChain } from 'constants/tokens'
 import JSBI from 'jsbi'
 import { GetQuoteArgs, QuoteResult, QuoteState } from 'state/routing/types'

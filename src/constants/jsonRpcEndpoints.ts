@@ -15,7 +15,5 @@ export const JSON_RPC_FALLBACK_ENDPOINTS: Record<SupportedChainId, string[]> = {
     // "Safe" URLs
     'https://rpc-tanenbaum.rollux.com/',
   ],
-  [SupportedChainId.ROLLUX]: [
-    "https://rpc.rollux.com/"
-  ]
+  [SupportedChainId.ROLLUX]: ['https://rpc.rollux.com/'],
 }

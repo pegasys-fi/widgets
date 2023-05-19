@@ -8,12 +8,12 @@ export enum SupportedChainId {
 
 export enum ChainName {
   ROLLUX_TANENBAUM = 'rollux-tanenbaum',
-  ROLLUX = 'rollux'
+  ROLLUX = 'rollux',
 }
 
 export const CHAIN_NAMES_TO_IDS: { [chainName: string]: SupportedChainId } = {
   [ChainName.ROLLUX_TANENBAUM]: SupportedChainId.ROLLUX_TANENBAUM,
-  [ChainName.ROLLUX]: SupportedChainId.ROLLUX
+  [ChainName.ROLLUX]: SupportedChainId.ROLLUX,
 }
 
 /**
@@ -23,9 +23,7 @@ export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = Object.values(Support
   (id) => typeof id === 'number'
 ) as SupportedChainId[]
 
-export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
-  SupportedChainId.ROLLUX
-]
+export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [SupportedChainId.ROLLUX]
 
 /**
  * All the chain IDs that are running the Ethereum protocol.

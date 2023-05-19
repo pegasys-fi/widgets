@@ -81,7 +81,7 @@ export const routing = createApi({
               let data: string | Record<string, unknown> = await response.text()
               try {
                 data = JSON.parse(data)
-              } catch { }
+              } catch {}
 
               // NO_ROUTE should be treated as a valid response to prevent retries.
               if (typeof data === 'object' && data.errorCode === 'NO_ROUTE') {

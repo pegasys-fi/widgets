@@ -120,7 +120,7 @@ export function Provider({
 }
 
 function initializeWeb3ReactConnector<T extends Connector, P extends object>(
-  Constructor: { new(options: P): T },
+  Constructor: { new (options: P): T },
   options: Omit<P, 'actions'>
 ): Web3ReactConnector<T> {
   const [connector, hooks] = initializeConnector((actions) => new Constructor({ actions, ...options } as P))

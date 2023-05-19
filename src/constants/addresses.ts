@@ -10,9 +10,7 @@ export const UNI_ADDRESS: AddressMap = {
 
 export const MULTICALL_ADDRESS: AddressMap = constructSameAddressMap('0xcba1683e1f0ba5061573cce7c1a73a80c3827cef')
 
-
 export const SWAP_ROUTER_ADDRESSES: AddressMap = constructSameAddressMap('0xfB2529aE4D41ae6c8B6782a5CBb56E24141133D8')
-
 
 export const ARGENT_WALLET_DETECTOR_ADDRESS: AddressMap = {}
 

@@ -19,7 +19,6 @@ export enum ExplorerDataType {
  * @param type the type of the data
  */
 export function getExplorerLink(chainId: number, data: string, type: ExplorerDataType): string {
-
   const prefix = ETHERSCAN_PREFIXES[chainId] ?? 'https://explorer.rollux.com'
 
   switch (type) {
