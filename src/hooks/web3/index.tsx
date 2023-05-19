@@ -20,7 +20,7 @@ import {
   toJsonRpcUrlMap,
 } from './useJsonRpcUrlsMap'
 
-const DEFAULT_CHAIN_ID = SupportedChainId.ROLLUX_TESTNET
+const DEFAULT_CHAIN_ID = SupportedChainId.ROLLUX
 
 type Web3ReactConnector<T extends Connector = Connector> = [T, Web3ReactHooks]
 
@@ -53,7 +53,7 @@ export function TestableProvider({ provider, children }: PropsWithChildren<{ pro
 }
 
 export function Provider({
-  defaultChainId: chainId = SupportedChainId.ROLLUX_TESTNET,
+  defaultChainId: chainId = SupportedChainId.ROLLUX,
   jsonRpcUrlMap,
   provider,
   children,

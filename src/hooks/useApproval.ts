@@ -45,9 +45,9 @@ export function useApproval(
   spender: string | undefined,
   useIsPendingApproval: (token?: Token, spender?: string) => boolean
 ): [
-    ApprovalState,
-    () => Promise<{ response: TransactionResponse; tokenAddress: string; spenderAddress: string } | undefined>
-  ] {
+  ApprovalState,
+  () => Promise<{ response: TransactionResponse; tokenAddress: string; spenderAddress: string } | undefined>
+] {
   const { chainId } = useWeb3React()
   const token = amountToApprove?.currency?.isToken ? amountToApprove.currency : undefined
 

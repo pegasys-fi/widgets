@@ -52,23 +52,23 @@ export function useSwapCallArguments(
       deadlineOrPreviousBlockhash: deadline.toString(),
       ...(signatureData
         ? {
-          inputTokenPermit:
-            'allowed' in signatureData
-              ? {
-                expiry: signatureData.deadline,
-                nonce: signatureData.nonce,
-                s: signatureData.s,
-                r: signatureData.r,
-                v: signatureData.v as any,
-              }
-              : {
-                deadline: signatureData.deadline,
-                amount: signatureData.amount,
-                s: signatureData.s,
-                r: signatureData.r,
-                v: signatureData.v as any,
-              },
-        }
+            inputTokenPermit:
+              'allowed' in signatureData
+                ? {
+                    expiry: signatureData.deadline,
+                    nonce: signatureData.nonce,
+                    s: signatureData.s,
+                    r: signatureData.r,
+                    v: signatureData.v as any,
+                  }
+                : {
+                    deadline: signatureData.deadline,
+                    amount: signatureData.amount,
+                    s: signatureData.s,
+                    r: signatureData.r,
+                    v: signatureData.v as any,
+                  },
+          }
         : {}),
     }
     const { value, calldata } = SwapRouter.swapCallParameters(trade, swapOptions)

@@ -16,9 +16,9 @@ export function usePriceImpact(trade?: InterfaceTrade): PriceImpact | undefined 
     const marketPriceImpact = trade ? computeRealizedPriceImpact(trade) : undefined
     return marketPriceImpact
       ? {
-        percent: marketPriceImpact,
-        warning: getPriceImpactWarning(marketPriceImpact),
-      }
+          percent: marketPriceImpact,
+          warning: getPriceImpactWarning(marketPriceImpact),
+        }
       : undefined
   }, [trade])
 }

@@ -1,6 +1,6 @@
 import { t, Trans } from '@lingui/macro'
-import { formatPriceImpact } from '@uniswap/conedison/format'
 import { Currency, CurrencyAmount, Token } from '@pollum-io/sdk-core'
+import { formatPriceImpact } from '@uniswap/conedison/format'
 import ActionButton, { Action, ActionButtonColor } from 'components/ActionButton'
 import Column from 'components/Column'
 import { Header, MIN_PAGE_CENTERED_DIALOG_WIDTH, useCloseDialog, useIsDialogPageCentered } from 'components/Dialog'
@@ -214,19 +214,19 @@ export function ConfirmButton({
       case ReviewState.REVIEWING:
         return doesTradeDiffer
           ? [
-            {
-              color: 'accent',
-              message: <Trans>Price updated</Trans>,
-              icon: AlertTriangle,
-              tooltipContent: (
-                <SmallToolTipBody>
-                  <SwapInputOutputEstimate trade={trade} slippage={slippage} />
-                </SmallToolTipBody>
-              ),
-              onClick: onAcknowledgeClick,
-              children: <Trans>Swap</Trans>,
-            },
-          ]
+              {
+                color: 'accent',
+                message: <Trans>Price updated</Trans>,
+                icon: AlertTriangle,
+                tooltipContent: (
+                  <SmallToolTipBody>
+                    <SwapInputOutputEstimate trade={trade} slippage={slippage} />
+                  </SmallToolTipBody>
+                ),
+                onClick: onAcknowledgeClick,
+                children: <Trans>Swap</Trans>,
+              },
+            ]
           : []
     }
   }, [

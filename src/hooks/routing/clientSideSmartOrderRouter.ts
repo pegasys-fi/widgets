@@ -3,14 +3,7 @@ import { BigintIsh, CurrencyAmount, Token, TradeType } from '@pollum-io/sdk-core
 import type { AlphaRouterConfig } from '@pollum-io/smart-order-router'
 // This file is lazy-loaded, so the import of smart-order-router is intentional.
 // eslint-disable-next-line @typescript-eslint/no-restricted-imports
-import {
-  AlphaRouter,
-  ChainId,
-  OnChainQuoteProvider,
-  routeAmountsToString,
-  StaticV2SubgraphProvider,
-  UniswapMulticallProvider,
-} from '@pollum-io/smart-order-router'
+import { AlphaRouter, ChainId, routeAmountsToString, StaticV2SubgraphProvider } from '@pollum-io/smart-order-router'
 import { nativeOnChain } from 'constants/tokens'
 import JSBI from 'jsbi'
 import { GetQuoteArgs, QuoteResult, QuoteState } from 'state/routing/types'
@@ -38,9 +31,10 @@ function getRouter(chainId: ChainId, provider: BaseProvider): AlphaRouter {
   // V2 is unsupported for chains other than mainnet.
   // TODO(zzmp): Upstream to @uniswap/smart-order-router, exporting an enum of supported v2 chains for clarity.
   let v2SubgraphProvider
-  if (chainId !== ChainId.ROLLUX_TESTNET) { //TODO : verify this later
-    v2SubgraphProvider = new StaticV2SubgraphProvider(chainId)
-  }
+  // if (chainId !== ChainId.ROLLUX_TANENBAUM) {
+  //   //TODO : verify this later
+  //   v2SubgraphProvider = new StaticV2SubgraphProvider(chainId)
+  // }
 
   // V3 computes on-chain, so the quoter must have gas limits appropriate to the provider.
   // Most defaults are fine, but polygon needs a lower gas limit.

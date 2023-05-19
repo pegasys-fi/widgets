@@ -1,9 +1,4 @@
-import ethereumLogoUrl from 'assets/images/ethereum-logo.png'
-import arbitrumLogoUrl from 'assets/svg/arbitrum_logo.svg'
-import bnbLogo from 'assets/svg/bnb-logo.svg'
-import celoLogo from 'assets/svg/celo_logo.svg'
 import optimismLogoUrl from 'assets/svg/optimism_logo.svg'
-import polygonMaticLogo from 'assets/svg/polygon-matic-logo.svg'
 import ms from 'ms.macro'
 
 import { SupportedChainId, SupportedL1ChainId, SupportedL2ChainId } from './chains'
@@ -59,18 +54,32 @@ export type ChainInfoMap = { readonly [chainId: number]: L1ChainInfo | L2ChainIn
   { readonly [chainId in SupportedL1ChainId]: L1ChainInfo }
 
 const CHAIN_INFO: ChainInfoMap = {
-
-  [SupportedChainId.ROLLUX_TESTNET]: {
+  [SupportedChainId.ROLLUX]: {
     networkType: NetworkType.L2,
     blockWaitMsBeforeWarning: ms`25m`,
-    bridge: 'https://app.optimism.io/bridge',
-    docs: 'https://optimism.io/',
+    bridge: 'https://rollux.com',
+    docs: 'https://rollux.com/',
+    explorer: 'https://explorer.rollux.com/',
+    infoLink: 'https://info.pegasys.fi/#/rollux/',
+    label: 'Rollux',
+    logoUrl: optimismLogoUrl,
+    statusPage: 'https://rollux.com',
+    helpCenterUrl: 'https://rollux.com',
+    nativeCurrency: { name: 'Syscoin', symbol: 'SYS', decimals: 18 },
+    color: '#FF0420',
+    backgroundColor: '#ff042029',
+  },
+  [SupportedChainId.ROLLUX_TANENBAUM]: {
+    networkType: NetworkType.L2,
+    blockWaitMsBeforeWarning: ms`25m`,
+    bridge: 'https://rollux.com',
+    docs: 'https://rollux.com/',
     explorer: 'https://rollux.tanenbaum.io/',
-    infoLink: 'https://info.uniswap.org/#/optimism/',
+    infoLink: 'https://info.pegasys.fi/#/rollux/',
     label: 'Rollux Testnet',
     logoUrl: optimismLogoUrl,
-    statusPage: 'https://optimism.io/status',
-    helpCenterUrl: 'https://help.uniswap.org/en/collections/3137778-uniswap-on-optimistic-ethereum-oξ',
+    statusPage: 'https://rollux.com',
+    helpCenterUrl: 'https://rollux.com',
     nativeCurrency: { name: 'Syscoin', symbol: 'SYS', decimals: 18 },
     color: '#FF0420',
     backgroundColor: '#ff042029',
@@ -99,7 +108,7 @@ export function getChainInfo(chainId: any): any {
   return undefined
 }
 
-export const MAINNET_INFO = CHAIN_INFO[SupportedChainId.ROLLUX_TESTNET]
+export const MAINNET_INFO = CHAIN_INFO[SupportedChainId.ROLLUX]
 export function getChainInfoOrDefault(chainId: number | undefined) {
   return getChainInfo(chainId) ?? MAINNET_INFO
 }

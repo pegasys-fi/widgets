@@ -1,5 +1,4 @@
 import { tokens } from '@pollum-io/default-token-list'
-import { TokenInfo } from '@uniswap/token-lists'
 import {
   darkTheme,
   defaultTheme,
@@ -8,30 +7,25 @@ import {
   SupportedChainId,
   SwapWidget,
 } from '@pollum-io/widgets'
+import { TokenInfo } from '@uniswap/token-lists'
 import Row from 'components/Row'
 import { CHAIN_NAMES_TO_IDS } from 'constants/chains'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useValue } from 'react-cosmos/fixture'
 
-import { DAI_ROLLUX_TESTNET, USDC_ROLLUX_TESTNET } from '../constants/tokens'
+import { DAI_ROLLUX } from '../constants/tokens'
 import EventFeed, { Event, HANDLERS } from './EventFeed'
 import useOption from './useOption'
 import useProvider from './useProvider'
 
-const TOKEN_WITH_NO_LOGO = {
-  chainId: 1,
-  decimals: 18,
-  symbol: 'HDRN',
-  name: 'Hedron',
-  address: '0x3819f64f282bf135d62168C1e513280dAF905e06',
-}
 
-const mainnetTokens = tokens.filter((token) => token.chainId === SupportedChainId.ROLLUX_TESTNET)
+
+const mainnetTokens = tokens.filter((token) => token.chainId === SupportedChainId.ROLLUX)
 const tokenLists: Record<string, TokenInfo[] | string> = {
   Default: tokens,
   Extended: 'https://extendedtokens.uniswap.org/',
   'Mainnet only': mainnetTokens,
-  Logoless: [TOKEN_WITH_NO_LOGO],
+  Logoless: [],
 }
 
 function Fixture() {
@@ -55,8 +49,8 @@ function Fixture() {
   // TODO(zzmp): Changing defaults has no effect if done after the first render.
   const currencies: Record<string, string> = {
     Native: 'NATIVE',
-    DAI: DAI_ROLLUX_TESTNET.address,
-    USDC: DAI_ROLLUX_TESTNET.address,
+    DAI: DAI_ROLLUX.address,
+    USDC: DAI_ROLLUX.address,
   }
   const defaultInputToken = useOption('defaultInputToken', { options: currencies, defaultValue: 'Native' })
   const [defaultInputAmount] = useValue('defaultInputAmount', { defaultValue: 0 })
@@ -75,7 +69,7 @@ function Fixture() {
 
   const defaultNetwork = useOption('defaultChainId', {
     options: Object.keys(CHAIN_NAMES_TO_IDS),
-    defaultValue: 'mainnet',
+    defaultValue: 'rollux',
   })
   const defaultChainId = defaultNetwork ? CHAIN_NAMES_TO_IDS[defaultNetwork] : undefined
 
@@ -83,7 +77,7 @@ function Fixture() {
 
   const tokenList = useOption('tokenList', { options: tokenLists, defaultValue: 'Default', nullable: false })
 
-  const [routerUrl] = useValue('routerUrl', { defaultValue: 'https://api.uniswap.org/v1/' })
+  const [routerUrl] = useValue('routerUrl', { defaultValue: 'https://a0cxzj8dg5.execute-api.us-east-2.amazonaws.com/prod/' })
 
   const dialogAnimation = useOption('dialogAnimation', {
     defaultValue: DialogAnimationType.FADE,

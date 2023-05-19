@@ -36,7 +36,7 @@ async function getColorFromUriPath(uri: string): Promise<string | undefined> {
   try {
     const palette = await Vibrant.from(uri).getPalette()
     return palette.Vibrant?.hex
-  } catch { }
+  } catch {}
   return
 }
 

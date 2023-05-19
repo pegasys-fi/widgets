@@ -8,7 +8,7 @@ import { renderHook, waitFor } from 'test'
 
 import useWrapCallback from './useWrapCallback'
 
-const ETH = ExtendedEther.onChain(SupportedChainId.ROLLUX_TESTNET)
+const ETH = ExtendedEther.onChain(SupportedChainId.ROLLUX)
 const WETH = ETH.wrapped
 const AMOUNT = CurrencyAmount.fromRawAmount(ETH, parseEther('1').toString())
 const WRAP_TRANSACTION_INFO = {

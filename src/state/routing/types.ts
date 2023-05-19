@@ -95,26 +95,26 @@ export interface QuoteData {
 
 export type QuoteResult =
   | {
-    state: QuoteState.INITIALIZED | QuoteState.NOT_FOUND
-    data?: undefined
-  }
+      state: QuoteState.INITIALIZED | QuoteState.NOT_FOUND
+      data?: undefined
+    }
   | {
-    state: QuoteState.SUCCESS
-    data: QuoteData
-  }
+      state: QuoteState.SUCCESS
+      data: QuoteData
+    }
 
 export type TradeResult =
   | {
-    state: QuoteState.INITIALIZED | QuoteState.NOT_FOUND
-    trade?: undefined
-    gasUseEstimateUSD?: undefined
-    blockNumber?: undefined
-  }
+      state: QuoteState.INITIALIZED | QuoteState.NOT_FOUND
+      trade?: undefined
+      gasUseEstimateUSD?: undefined
+      blockNumber?: undefined
+    }
   | {
-    state: QuoteState.SUCCESS
-    trade: InterfaceTrade
-    gasUseEstimateUSD: string
-    blockNumber: string
-  }
+      state: QuoteState.SUCCESS
+      trade: InterfaceTrade
+      gasUseEstimateUSD: string
+      blockNumber: string
+    }
 
-export class InterfaceTrade extends Trade<Currency, Currency, TradeType> { }
+export class InterfaceTrade extends Trade<Currency, Currency, TradeType> {}

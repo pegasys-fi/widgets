@@ -43,14 +43,14 @@ function Fixture() {
   )
   const inputToken = useOption('input', {
     options: currencies,
-    defaultValue: SupportedChainId[SupportedChainId.ROLLUX_TESTNET],
+    defaultValue: SupportedChainId[SupportedChainId.ROLLUX],
   })
   const outputToken = useOption('output', {
     options: currencies,
-    defaultValue: `${SupportedChainId[SupportedChainId.ROLLUX_TESTNET]} USDC`,
+    defaultValue: `${SupportedChainId[SupportedChainId.ROLLUX]} USDC`,
   })
 
-  const connector = useProvider(SupportedChainId.ROLLUX_TESTNET)
+  const connector = useProvider(SupportedChainId.ROLLUX)
 
   const eventHandlers = useMemo(
     // eslint-disable-next-line react-hooks/rules-of-hooks

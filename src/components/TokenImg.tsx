@@ -14,7 +14,7 @@ function TokenImg({ token, size = 1.5 }: TokenImgProps) {
   return <Logo currency={token} size={size + 'rem'} symbol={token.symbol} />
 }
 
-export default styled(TokenImg) <{ size?: number }>`
+export default styled(TokenImg)<{ size?: number }>`
   // radial-gradient calculates distance from the corner, not the edge: divide by sqrt(2)
   background: radial-gradient(
     ${({ theme }) => theme.module} calc(100% / ${Math.sqrt(2)} - 1.5px),

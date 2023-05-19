@@ -7,7 +7,7 @@ import {
   // CEUR_CELO,
   // CMC02_CELO,
   // CUSD_CELO,
-  DAI_ROLLUX_TESTNET,
+  DAI_ROLLUX,
   // DAI_ARBITRUM_ONE,
   // DAI_OPTIMISM,
   // DAI_POLYGON,
@@ -24,9 +24,9 @@ import {
   // SWISE,
   // TRIBE,
   // USDC_BNB_CHAIN,
-  USDC_ROLLUX_TESTNET,
+  USDC_ROLLUX,
   // USDC_POLYGON,
-  USDT_ROLLUX_TESTNET,
+  USDT_ROLLUX,
   // USDT_ARBITRUM_ONE,
   // USDT_BNB_CHAIN,
   // USDT_OPTIMISM,
@@ -51,18 +51,16 @@ const WRAPPED_NATIVE_CURRENCIES_ONLY: ChainTokenList = Object.fromEntries(
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WRAPPED_NATIVE_CURRENCIES_ONLY,
-  [SupportedChainId.ROLLUX_TESTNET]: [
-    nativeOnChain(SupportedChainId.ROLLUX_TESTNET),
-    DAI_ROLLUX_TESTNET,
-    USDC_ROLLUX_TESTNET,
-    USDT_ROLLUX_TESTNET,
-    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ROLLUX_TESTNET],
+  [SupportedChainId.ROLLUX]: [
+    nativeOnChain(SupportedChainId.ROLLUX),
+    DAI_ROLLUX,
+    USDC_ROLLUX,
+    USDT_ROLLUX,
+    ...WRAPPED_NATIVE_CURRENCIES_ONLY[SupportedChainId.ROLLUX],
   ],
-
 }
 /**
  * Some tokens can only be swapped via certain pairs, so we override the list of bases that are considered for these
  * tokens.
  */
-export const CUSTOM_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {
-}
+export const CUSTOM_BASES: { [chainId: number]: { [tokenAddress: string]: Token[] } } = {}

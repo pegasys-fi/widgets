@@ -1,6 +1,6 @@
 import { SupportedChainId } from '@pollum-io/sdk-core'
 import { BASES_TO_CHECK_TRADES_AGAINST } from 'constants/routing'
-import { USDC_ROLLUX_TESTNET } from 'constants/tokens'
+import { USDC_ROLLUX } from 'constants/tokens'
 import { renderComponent, userEvent, waitFor } from 'test'
 
 import CommonBases from './CommonBases'
@@ -18,7 +18,7 @@ describe('CommonBases', () => {
     const callback = jest.fn()
     const component = renderComponent(<CommonBases chainId={SupportedChainId.ROLLUX} onSelect={callback} />)
     component.getByText('USDC').click()
-    expect(callback).toHaveBeenCalledWith(USDC_ROLLUX_TESTNET)
+    expect(callback).toHaveBeenCalledWith(USDC_ROLLUX)
   })
 
   it('calls the select function on enter', async () => {
@@ -28,7 +28,7 @@ describe('CommonBases', () => {
     await user.tab()
     await user.type(component.container, '{enter}')
     waitFor(() => {
-      expect(callback).toHaveBeenCalledWith(USDC_ROLLUX_TESTNET)
+      expect(callback).toHaveBeenCalledWith(USDC_ROLLUX)
     })
   })
 

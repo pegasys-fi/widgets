@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro'
-import { Placement } from '@popperjs/core'
 import { Currency, CurrencyAmount } from '@pollum-io/sdk-core'
+import { Placement } from '@popperjs/core'
 import Row from 'components/Row'
 import Tooltip from 'components/Tooltip'
 import { loadingCss } from 'css/loading'
@@ -20,7 +20,7 @@ const Loading = styled.span`
   ${loadingCss};
 `
 
-const CaptionRow = styled(Row) <{ gap: number; shrink?: number }>`
+const CaptionRow = styled(Row)<{ gap: number; shrink?: number }>`
   align-items: center;
   flex-shrink: ${({ shrink }) => shrink ?? 1};
   gap: ${({ gap }) => gap}rem;
@@ -28,7 +28,7 @@ const CaptionRow = styled(Row) <{ gap: number; shrink?: number }>`
 `
 
 // TODO (tina): consolidate this and Expando icon
-const ExpandIcon = styled(ChevronDown) <{ $expanded: boolean }>`
+const ExpandIcon = styled(ChevronDown)<{ $expanded: boolean }>`
   color: ${({ theme }) => theme.secondary};
   cursor: pointer;
   transform: ${({ $expanded }) => ($expanded ? 'rotate(180deg)' : 'rotate(0deg)')};
@@ -141,7 +141,7 @@ interface ExpandProps {
   warning?: 'warning' | 'error'
 }
 
-const ExpanderRow = styled(Row) <{ $expanded: boolean; warning?: 'warning' | 'error' }>`
+const ExpanderRow = styled(Row)<{ $expanded: boolean; warning?: 'warning' | 'error' }>`
   ${({ warning, $expanded }) => {
     if (!warning) return undefined
     return css`

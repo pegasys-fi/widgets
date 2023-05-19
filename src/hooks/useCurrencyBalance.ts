@@ -23,10 +23,10 @@ export function useNativeCurrencyBalances(uncheckedAddresses?: (string | undefin
     () =>
       uncheckedAddresses
         ? uncheckedAddresses
-          .map(isAddress)
-          .filter((a): a is string => a !== false)
-          .sort()
-          .map((addr) => [addr])
+            .map(isAddress)
+            .filter((a): a is string => a !== false)
+            .sort()
+            .map((addr) => [addr])
         : [],
     [uncheckedAddresses]
   )
@@ -75,13 +75,13 @@ export function useTokenBalancesWithLoadingIndicator(
     () => [
       address && validatedTokens.length > 0
         ? validatedTokens.reduce<{ [tokenAddress: string]: CurrencyAmount<Token> | undefined }>((memo, token, i) => {
-          const value = balances?.[i]?.result?.[0]
-          const amount = value ? JSBI.BigInt(value.toString()) : undefined
-          if (amount) {
-            memo[token.address] = CurrencyAmount.fromRawAmount(token, amount)
-          }
-          return memo
-        }, {})
+            const value = balances?.[i]?.result?.[0]
+            const amount = value ? JSBI.BigInt(value.toString()) : undefined
+            if (amount) {
+              memo[token.address] = CurrencyAmount.fromRawAmount(token, amount)
+            }
+            return memo
+          }, {})
         : {},
       anyLoading,
     ],

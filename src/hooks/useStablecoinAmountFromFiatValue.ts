@@ -1,14 +1,14 @@
 import { CurrencyAmount, Token } from '@pollum-io/sdk-core'
 import { useWeb3React } from '@web3-react/core'
 import { SupportedChainId } from 'constants/chains'
-import { USDC_ROLLUX_TESTNET } from 'constants/tokens'
+import { USDC_ROLLUX } from 'constants/tokens'
 import { useMemo } from 'react'
 import tryParseCurrencyAmount from 'utils/tryParseCurrencyAmount'
 
 // Stablecoin amounts used when calculating spot price for a given currency.
 // The amount is large enough to filter low liquidity pairs.
 export const STABLECOIN_AMOUNT_OUT: { [chainId: number]: CurrencyAmount<Token> } = {
-  [SupportedChainId.ROLLUX_TESTNET]: CurrencyAmount.fromRawAmount(USDC_ROLLUX_TESTNET, 100_000e6),
+  [SupportedChainId.ROLLUX]: CurrencyAmount.fromRawAmount(USDC_ROLLUX, 100_000e6),
   // [SupportedChainId.ARBITRUM_ONE]: CurrencyAmount.fromRawAmount(USDC_ARBITRUM, 10_000e6),
   // [SupportedChainId.OPTIMISM]: CurrencyAmount.fromRawAmount(DAI_OPTIMISM, 10_000e18),
   // [SupportedChainId.POLYGON]: CurrencyAmount.fromRawAmount(USDC_POLYGON, 10_000e6),

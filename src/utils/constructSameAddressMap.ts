@@ -1,8 +1,6 @@
 import { SupportedChainId } from 'constants/chains'
 
-const DEFAULT_NETWORKS = [
-  SupportedChainId.ROLLUX_TESTNET,
-]
+const DEFAULT_NETWORKS = [SupportedChainId.ROLLUX_TANENBAUM, SupportedChainId.ROLLUX]
 
 export function constructSameAddressMap<T extends string>(
   address: T,

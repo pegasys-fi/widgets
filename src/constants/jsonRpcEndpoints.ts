@@ -11,9 +11,11 @@ import { SupportedChainId } from './chains'
  * These "Safe" URLs are listed first, followed by other fallback URLs, which are taken from chainlist.org.
  */
 export const JSON_RPC_FALLBACK_ENDPOINTS: Record<SupportedChainId, string[]> = {
-  [SupportedChainId.ROLLUX_TESTNET]: [
+  [SupportedChainId.ROLLUX_TANENBAUM]: [
     // "Safe" URLs
     'https://rpc-tanenbaum.rollux.com/',
   ],
-
+  [SupportedChainId.ROLLUX]: [
+    "https://rpc.rollux.com/"
+  ]
 }

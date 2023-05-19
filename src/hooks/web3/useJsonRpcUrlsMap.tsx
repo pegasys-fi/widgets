@@ -18,7 +18,8 @@ export default function useJsonRpcUrlsMap(): Record<SupportedChainId, string[]> 
 
 function toJsonRpcMap<T>(getChainConnections: (chainId: SupportedChainId) => T): Record<SupportedChainId, T> {
   return {
-    [SupportedChainId.ROLLUX_TESTNET]: getChainConnections(SupportedChainId.ROLLUX_TESTNET),
+    [SupportedChainId.ROLLUX_TANENBAUM]: getChainConnections(SupportedChainId.ROLLUX_TANENBAUM),
+    [SupportedChainId.ROLLUX]: getChainConnections(SupportedChainId.ROLLUX),
     // [SupportedChainId.ROPSTEN]: getChainConnections(SupportedChainId.ROPSTEN),
     // [SupportedChainId.RINKEBY]: getChainConnections(SupportedChainId.RINKEBY),
     // [SupportedChainId.GOERLI]: getChainConnections(SupportedChainId.GOERLI),

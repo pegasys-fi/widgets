@@ -1,5 +1,5 @@
 import { SupportedChainId, TradeType } from '@pollum-io/sdk-core'
-import { DAI_ROLLUX_TESTNET, ExtendedEther, USDC_ROLLUX_TESTNET, WRAPPED_NATIVE_CURRENCY } from 'constants/tokens'
+import { DAI_ROLLUX, ExtendedEther, USDC, USDC_ROLLUX, WRAPPED_NATIVE_CURRENCY } from 'constants/tokens'
 import { SwapInfoProvider } from 'hooks/swap/useSwapInfo'
 import Module from 'module'
 import { Field, stateAtom, Swap } from 'state/swap'
@@ -25,8 +25,8 @@ export function getInitialTradeState(trade: Partial<Swap> = {}) {
   return {
     type: TradeType.EXACT_INPUT,
     amount: '',
-    [Field.INPUT]: DAI_ROLLUX_TESTNET,
-    [Field.OUTPUT]: USDC_ROLLUX_TESTNET,
+    [Field.INPUT]: DAI_ROLLUX,
+    [Field.OUTPUT]: USDC_ROLLUX,
     ...trade,
   }
 }

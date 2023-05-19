@@ -9,7 +9,7 @@ import Button from '../Button'
 import Row from '../Row'
 import TokenImg from '../TokenImg'
 
-const StyledTokenButton = styled(Button) <{ approved?: boolean }>`
+const StyledTokenButton = styled(Button)<{ approved?: boolean }>`
   border-radius: ${({ theme }) => theme.borderRadius.medium}rem;
   min-height: 2rem;
   padding: 0.25rem 0.5rem 0.25rem 0.25rem;
@@ -23,7 +23,7 @@ const StyledTokenButton = styled(Button) <{ approved?: boolean }>`
   }
 `
 
-const TokenButtonRow = styled(Row) <{ empty: boolean }>`
+const TokenButtonRow = styled(Row)<{ empty: boolean }>`
   max-width: 12rem;
   overflow: hidden;
   padding-left: ${({ empty }) => empty && 0.5}rem;

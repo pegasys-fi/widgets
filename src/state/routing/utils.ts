@@ -19,8 +19,8 @@ export function computeRoutes(
   routes: QuoteData['route']
 ):
   | {
-    routev3: V3Route<Currency, Currency> | null
-    routev2: V2Route<Currency, Currency> | null
+    routev2: V3Route<Currency, Currency> | null
+    routev1: V2Route<Currency, Currency> | null
     mixedRoute: MixedRouteSDK<Currency, Currency> | null
     inputAmount: CurrencyAmount<Currency>
     outputAmount: CurrencyAmount<Currency>
@@ -51,8 +51,8 @@ export function computeRoutes(
       const isOnlyV3 = isVersionedRoute<V3PoolInRoute>(PoolType.V3Pool, route)
 
       return {
-        routev3: isOnlyV3 ? new V3Route(route.map(parsePool), parsedCurrencyIn, parsedCurrencyOut) : null,
-        routev2: isOnlyV2 ? new V2Route(route.map(parsePair), parsedCurrencyIn, parsedCurrencyOut) : null,
+        routev2: isOnlyV3 ? new V3Route(route.map(parsePool), parsedCurrencyIn, parsedCurrencyOut) : null,
+        routev1: isOnlyV2 ? new V2Route(route.map(parsePair), parsedCurrencyIn, parsedCurrencyOut) : null,
         mixedRoute:
           !isOnlyV3 && !isOnlyV2
             ? new MixedRouteSDK(route.map(parsePoolOrPair), parsedCurrencyIn, parsedCurrencyOut)
@@ -77,7 +77,7 @@ export function transformQuoteToTradeResult(args: GetQuoteArgs, data: QuoteData)
     v1Routes:
       routes
         ?.filter(
-          (r): r is typeof routes[0] & { routev1: NonNullable<typeof routes[0]['routev2']> } => r.routev2 !== null
+          (r): r is typeof routes[0] & { routev1: NonNullable<typeof routes[0]['routev1']> } => r.routev1 !== null
         )
         .map(({ routev1, inputAmount, outputAmount }) => ({
           routev1,
@@ -87,7 +87,7 @@ export function transformQuoteToTradeResult(args: GetQuoteArgs, data: QuoteData)
     v2Routes:
       routes
         ?.filter(
-          (r): r is typeof routes[0] & { routev2: NonNullable<typeof routes[0]['routev3']> } => r.routev3 !== null
+          (r): r is typeof routes[0] & { routev2: NonNullable<typeof routes[0]['routev2']> } => r.routev2 !== null
         )
         .map(({ routev2, inputAmount, outputAmount }) => ({
           routev2,

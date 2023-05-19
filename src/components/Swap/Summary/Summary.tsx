@@ -1,5 +1,5 @@
-import { formatPriceImpact } from '@uniswap/conedison/format'
 import { Currency, CurrencyAmount } from '@pollum-io/sdk-core'
+import { formatPriceImpact } from '@uniswap/conedison/format'
 import { PriceImpact } from 'hooks/usePriceImpact'
 import { ArrowDown, ArrowRight } from 'icons'
 import { PropsWithChildren } from 'react'
@@ -11,7 +11,7 @@ import Column from '../../Column'
 import Row from '../../Row'
 import TokenImg from '../../TokenImg'
 
-const CollapsingColumn = styled(Column) <{ open: boolean }>`
+const CollapsingColumn = styled(Column)<{ open: boolean }>`
   justify-items: ${({ open }) => (open ? 'left' : 'center')};
 `
 

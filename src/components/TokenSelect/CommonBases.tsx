@@ -16,7 +16,7 @@ const activeCss = css`
   color: ${({ theme }) => theme.active};
 `
 
-const BaseWrapper = styled(Row) <{ active?: boolean }>`
+const BaseWrapper = styled(Row)<{ active?: boolean }>`
   border: 1px solid ${({ theme }) => theme.outline};
   border-radius: 1rem;
   color: ${({ theme, active }) => (active ? theme.active : theme.primary)};

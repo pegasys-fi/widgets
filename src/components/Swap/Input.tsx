@@ -1,6 +1,6 @@
 import { t, Trans } from '@lingui/macro'
-import { formatCurrencyAmount, NumberType } from '@uniswap/conedison/format'
 import { Currency, CurrencyAmount } from '@pollum-io/sdk-core'
+import { formatCurrencyAmount, NumberType } from '@uniswap/conedison/format'
 import { TextButton } from 'components/Button'
 import { loadingTransitionCss } from 'css/loading'
 import { useIsSwapFieldIndependent, useSwapAmount, useSwapCurrency, useSwapInfo } from 'hooks/swap'
@@ -30,7 +30,7 @@ const Balance = styled(ThemedText.Body2)`
   transition: color ${AnimationSpeed.Medium} ease-in-out;
 `
 
-const InputColumn = styled(Column) <{ disableHover?: boolean; isWide: boolean }>`
+const InputColumn = styled(Column)<{ disableHover?: boolean; isWide: boolean }>`
   background-color: ${({ theme }) => theme.module};
   border-radius: ${({ theme }) => theme.borderRadius.medium}rem;
   margin-bottom: 0.25rem;

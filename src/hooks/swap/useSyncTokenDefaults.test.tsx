@@ -1,7 +1,7 @@
-import { renderHook } from '@testing-library/react'
 import { TradeType } from '@pollum-io/sdk-core'
+import { renderHook } from '@testing-library/react'
 import { SupportedChainId } from 'constants/chains'
-import { DAI_ROLLUX_TESTNET, USDC_ROLLUX_TESTNET, nativeOnChain } from 'constants/tokens'
+import { DAI_ROLLUX, nativeOnChain, USDC_ROLLUX } from 'constants/tokens'
 // import { USDC_MAINNET } from 'constants/tokens'
 import { Provider as AtomProvider } from 'jotai'
 import { useAtomValue } from 'jotai/utils'
@@ -16,8 +16,8 @@ import useSyncTokenDefaults, { TokenDefaults } from './useSyncTokenDefaults'
 const INITIAL_SWAP: Swap = {
   type: TradeType.EXACT_INPUT,
   amount: '10',
-  [Field.INPUT]: USDC_ROLLUX_TESTNET,
-  [Field.OUTPUT]: DAI_ROLLUX_TESTNET,
+  [Field.INPUT]: USDC_ROLLUX,
+  [Field.OUTPUT]: DAI_ROLLUX,
 }
 
 const TOKEN_DEFAULTS: TokenDefaults = {
@@ -31,7 +31,7 @@ jest.mock('@web3-react/core', () => {
   const connector = {}
   return {
     useWeb3React: () => ({
-      chainId: SupportedChainId.ROLLUX_TESTNET,
+      chainId: SupportedChainId.ROLLUX,
       connector,
     }),
   }
@@ -45,7 +45,7 @@ jest.mock('../useTokenList', () => {
 
 jest.mock('hooks/useCurrency', () => {
   return {
-    useToken: () => DAI_ROLLUX_TESTNET,
+    useToken: () => DAI_ROLLUX,
   }
 })
 
@@ -79,8 +79,8 @@ describe('useSyncTokenDefaults', () => {
     )
     expect(result.current).toMatchObject({
       ...INITIAL_SWAP,
-      INPUT: nativeOnChain(SupportedChainId.ROLLUX_TESTNET),
-      OUTPUT: nativeOnChain(SupportedChainId.ROLLUX_TESTNET),
+      INPUT: nativeOnChain(SupportedChainId.ROLLUX),
+      OUTPUT: nativeOnChain(SupportedChainId.ROLLUX),
     })
   })
 
@@ -114,8 +114,8 @@ describe('useSyncTokenDefaults', () => {
     )
     expect(result.current).toMatchObject({
       ...INITIAL_SWAP,
-      INPUT: nativeOnChain(SupportedChainId.ROLLUX_TESTNET),
-      OUTPUT: nativeOnChain(SupportedChainId.ROLLUX_TESTNET),
+      INPUT: nativeOnChain(SupportedChainId.ROLLUX),
+      OUTPUT: nativeOnChain(SupportedChainId.ROLLUX),
     })
   })
 })

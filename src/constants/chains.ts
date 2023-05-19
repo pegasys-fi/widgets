@@ -2,16 +2,18 @@
  * List of all the networks supported by the Uniswap Interface
  */
 export enum SupportedChainId {
-  ROLLUX_TESTNET = 57000,
-
+  ROLLUX_TANENBAUM = 57000,
+  ROLLUX = 570,
 }
 
 export enum ChainName {
-  ROLLUX_TESTNET = 'rollux-testnet'
+  ROLLUX_TANENBAUM = 'rollux-tanenbaum',
+  ROLLUX = 'rollux'
 }
 
 export const CHAIN_NAMES_TO_IDS: { [chainName: string]: SupportedChainId } = {
-  [ChainName.ROLLUX_TESTNET]: SupportedChainId.ROLLUX_TESTNET
+  [ChainName.ROLLUX_TANENBAUM]: SupportedChainId.ROLLUX_TANENBAUM,
+  [ChainName.ROLLUX]: SupportedChainId.ROLLUX
 }
 
 /**
@@ -22,14 +24,13 @@ export const ALL_SUPPORTED_CHAIN_IDS: SupportedChainId[] = Object.values(Support
 ) as SupportedChainId[]
 
 export const SUPPORTED_GAS_ESTIMATE_CHAIN_IDS = [
-  SupportedChainId.ROLLUX_TESTNET
+  SupportedChainId.ROLLUX
 ]
 
 /**
  * All the chain IDs that are running the Ethereum protocol.
  */
-export const L1_CHAIN_IDS = [
-] as const
+export const L1_CHAIN_IDS = [] as const
 
 export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number]
 
@@ -37,9 +38,7 @@ export type SupportedL1ChainId = typeof L1_CHAIN_IDS[number]
  * Controls some L2 specific behavior, e.g. slippage tolerance, special UI behavior.
  * The expectation is that all of these networks have immediate transaction confirmation.
  */
-export const L2_CHAIN_IDS = [
-  SupportedChainId.ROLLUX_TESTNET
-] as const
+export const L2_CHAIN_IDS = [SupportedChainId.ROLLUX_TANENBAUM, SupportedChainId.ROLLUX] as const
 
 export type SupportedL2ChainId = typeof L2_CHAIN_IDS[number]
 

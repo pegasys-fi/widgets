@@ -1,20 +1,20 @@
 import { TradeType } from '@pollum-io/sdk-core'
 import { SupportedChainId } from 'constants/chains'
-import { DAI_ROLLUX_TESTNET, UNI, USDC_ROLLUX_TESTNET } from 'constants/tokens'
+import { DAI_ROLLUX, UNI, USDC_ROLLUX } from 'constants/tokens'
 import { useAtomValue } from 'jotai/utils'
 import { controlledAtom, Field, stateAtom, Swap, swapAtom, swapEventHandlersAtom } from 'state/swap'
 import { act, renderHook } from 'test'
 
 import { useSwapAmount, useSwapCurrency, useSwitchSwapCurrencies } from './'
 
-const DAI_MAINNET = DAI_ROLLUX_TESTNET
-const UNI_MAINNET = UNI[SupportedChainId.ROLLUX_TESTNET]
+const DAI_MAINNET = DAI_ROLLUX
+const UNI_MAINNET = UNI[SupportedChainId.ROLLUX]
 
 const INITIAL_SWAP: Swap = {
   type: TradeType.EXACT_INPUT,
   amount: '42',
   [Field.INPUT]: DAI_MAINNET,
-  [Field.OUTPUT]: USDC_ROLLUX_TESTNET,
+  [Field.OUTPUT]: USDC_ROLLUX,
 }
 
 describe('swap state', () => {
