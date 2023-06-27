@@ -14,7 +14,7 @@ import { validateTokens } from './validateTokenList'
 
 export { useQueryTokens } from './useQueryTokens'
 
-export const UNISWAP_TOKEN_LIST = 'https://raw.githubusercontent.com/pegasys-fi/default-token-list/main/src/tokens/rollux.json'
+export const UNISWAP_TOKEN_LIST = 'https://raw.githubusercontent.com/pegasys-fi/default-token-list/main/build/pegasys-default.tokenlist.json'
 export const EMPTY_TOKEN_LIST = []
 
 const MISSING_PROVIDER = Symbol()
