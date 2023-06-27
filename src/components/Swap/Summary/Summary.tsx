@@ -1,5 +1,5 @@
+import { Currency, CurrencyAmount } from '@pollum-io/sdk-core'
 import { formatPriceImpact } from '@uniswap/conedison/format'
-import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
 import { PriceImpact } from 'hooks/usePriceImpact'
 import { ArrowDown, ArrowRight } from 'icons'
 import { PropsWithChildren } from 'react'

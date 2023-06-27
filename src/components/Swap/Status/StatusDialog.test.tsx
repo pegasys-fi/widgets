@@ -1,5 +1,5 @@
 import { BigNumber } from '@ethersproject/bignumber'
-import { CurrencyAmount, Percent, TradeType } from '@uniswap/sdk-core'
+import { CurrencyAmount, Percent, TradeType } from '@pollum-io/sdk-core'
 import { InterfaceTrade } from 'state/routing/types'
 import { Transaction, TransactionType } from 'state/transactions'
 import { renderComponent } from 'test'
@@ -46,7 +46,7 @@ const buildTestTx = (status?: number): Transaction => ({
       chainId: 1,
     },
     trade: new InterfaceTrade({
-      v2Routes: [],
+      v1Routes: [],
       v3Routes: [buildMultiV3Route(usdc, dai), buildSingleV3Route(usdc, dai)],
       tradeType: TradeType.EXACT_INPUT,
     }),

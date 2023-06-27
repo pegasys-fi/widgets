@@ -1,5 +1,5 @@
+import { CurrencyAmount, Token } from '@pollum-io/sdk-core'
 import { formatCurrencyAmount, NumberType } from '@uniswap/conedison/format'
-import { CurrencyAmount, Token } from '@uniswap/sdk-core'
 import { BottomSheetModal } from 'components/BottomSheetModal'
 import Column from 'components/Column'
 import Popover from 'components/Popover'

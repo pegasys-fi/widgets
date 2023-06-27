@@ -1,4 +1,4 @@
-import { CurrencyAmount, Percent, TradeType } from '@uniswap/sdk-core'
+import { CurrencyAmount, Percent, TradeType } from '@pollum-io/sdk-core'
 import assert from 'assert'
 import { SwapInfoProvider } from 'hooks/swap/useSwapInfo'
 import * as usePermit2Allowance from 'hooks/usePermit2Allowance'
@@ -55,7 +55,7 @@ function Summary({ allowance }: { allowance: usePermit2Allowance.Allowance }) {
     <ConfirmButton
       trade={
         new InterfaceTrade({
-          v2Routes: [],
+          v1Routes: [],
           v3Routes: [buildMultiV3Route(usdc, dai), buildSingleV3Route(usdc, dai)],
           tradeType: TradeType.EXACT_INPUT,
         })

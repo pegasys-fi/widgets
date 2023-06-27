@@ -7,7 +7,5 @@ updates:
       interval: 'daily'
     allow:
       - dependency-name: '@uniswap/token-lists'
-      - dependency-name: '@uniswap/default-token-list'
+      - dependency-name: '@pollum-io/default-token-list'
       - dependency-name: '@uniswap/redux-multicall'
-    reviewers:
-      - 'Uniswap/dependabot-reviewers'

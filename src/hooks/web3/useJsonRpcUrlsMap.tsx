@@ -18,20 +18,21 @@ export default function useJsonRpcUrlsMap(): Record<SupportedChainId, string[]> 
 
 function toJsonRpcMap<T>(getChainConnections: (chainId: SupportedChainId) => T): Record<SupportedChainId, T> {
   return {
-    [SupportedChainId.MAINNET]: getChainConnections(SupportedChainId.MAINNET),
-    [SupportedChainId.ROPSTEN]: getChainConnections(SupportedChainId.ROPSTEN),
-    [SupportedChainId.RINKEBY]: getChainConnections(SupportedChainId.RINKEBY),
-    [SupportedChainId.GOERLI]: getChainConnections(SupportedChainId.GOERLI),
-    [SupportedChainId.KOVAN]: getChainConnections(SupportedChainId.KOVAN),
-    [SupportedChainId.POLYGON]: getChainConnections(SupportedChainId.POLYGON),
-    [SupportedChainId.POLYGON_MUMBAI]: getChainConnections(SupportedChainId.POLYGON_MUMBAI),
-    [SupportedChainId.ARBITRUM_ONE]: getChainConnections(SupportedChainId.ARBITRUM_ONE),
-    [SupportedChainId.ARBITRUM_RINKEBY]: getChainConnections(SupportedChainId.ARBITRUM_RINKEBY),
-    [SupportedChainId.OPTIMISM]: getChainConnections(SupportedChainId.OPTIMISM),
-    [SupportedChainId.OPTIMISM_GOERLI]: getChainConnections(SupportedChainId.OPTIMISM_GOERLI),
-    [SupportedChainId.CELO]: getChainConnections(SupportedChainId.CELO),
-    [SupportedChainId.CELO_ALFAJORES]: getChainConnections(SupportedChainId.CELO_ALFAJORES),
-    [SupportedChainId.BNB]: getChainConnections(SupportedChainId.BNB),
+    [SupportedChainId.ROLLUX_TANENBAUM]: getChainConnections(SupportedChainId.ROLLUX_TANENBAUM),
+    [SupportedChainId.ROLLUX]: getChainConnections(SupportedChainId.ROLLUX),
+    // [SupportedChainId.ROPSTEN]: getChainConnections(SupportedChainId.ROPSTEN),
+    // [SupportedChainId.RINKEBY]: getChainConnections(SupportedChainId.RINKEBY),
+    // [SupportedChainId.GOERLI]: getChainConnections(SupportedChainId.GOERLI),
+    // [SupportedChainId.KOVAN]: getChainConnections(SupportedChainId.KOVAN),
+    // [SupportedChainId.POLYGON]: getChainConnections(SupportedChainId.POLYGON),
+    // [SupportedChainId.POLYGON_MUMBAI]: getChainConnections(SupportedChainId.POLYGON_MUMBAI),
+    // [SupportedChainId.ARBITRUM_ONE]: getChainConnections(SupportedChainId.ARBITRUM_ONE),
+    // [SupportedChainId.ARBITRUM_RINKEBY]: getChainConnections(SupportedChainId.ARBITRUM_RINKEBY),
+    // [SupportedChainId.OPTIMISM]: getChainConnections(SupportedChainId.OPTIMISM),
+    // [SupportedChainId.OPTIMISM_GOERLI]: getChainConnections(SupportedChainId.OPTIMISM_GOERLI),
+    // [SupportedChainId.CELO]: getChainConnections(SupportedChainId.CELO),
+    // [SupportedChainId.CELO_ALFAJORES]: getChainConnections(SupportedChainId.CELO_ALFAJORES),
+    // [SupportedChainId.BNB]: getChainConnections(SupportedChainId.BNB),
   }
 }
 

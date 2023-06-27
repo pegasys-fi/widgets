@@ -1,4 +1,4 @@
-import { UNIVERSAL_ROUTER_ADDRESS } from '@uniswap/universal-router-sdk'
+import { UNIVERSAL_ROUTER_ADDRESS } from '@pollum-io/universal-router-sdk'
 import { useWeb3React } from '@web3-react/core'
 import { Atom, atom } from 'jotai'
 import { useAtomValue } from 'jotai/utils'

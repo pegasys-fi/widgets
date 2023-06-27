@@ -1,7 +1,8 @@
 import { Contract } from '@ethersproject/contracts'
-import { MaxAllowanceTransferAmount, PERMIT2_ADDRESS } from '@uniswap/permit2-sdk'
-import { CurrencyAmount } from '@uniswap/sdk-core'
-import { UNIVERSAL_ROUTER_ADDRESS } from '@uniswap/universal-router-sdk'
+import { CurrencyAmount } from '@pollum-io/sdk-core'
+import { PERMIT2_ADDRESS } from '@pollum-io/universal-router-sdk'
+import { UNIVERSAL_ROUTER_ADDRESS } from '@pollum-io/universal-router-sdk'
+import { MaxAllowanceTransferAmount } from '@uniswap/permit2-sdk'
 import PERMIT2_ABI from 'abis/permit2.json'
 import { Permit2 } from 'abis/types'
 import { SupportedChainId } from 'constants/chains'
@@ -14,9 +15,9 @@ import { renderHook, waitFor } from 'test'
 
 import { usePermitAllowance, useUpdatePermitAllowance } from './usePermitAllowance'
 
-const TOKEN = UNI[SupportedChainId.MAINNET]
+const TOKEN = UNI[SupportedChainId.ROLLUX]
 const OWNER = hardhat.account.address
-const SPENDER = UNIVERSAL_ROUTER_ADDRESS(SupportedChainId.MAINNET)
+const SPENDER = UNIVERSAL_ROUTER_ADDRESS(SupportedChainId.ROLLUX)
 
 const CONTRACT = new Contract(PERMIT2_ADDRESS, PERMIT2_ABI) as Permit2
 const EXPIRATION = 1234567890

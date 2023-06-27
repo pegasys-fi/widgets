@@ -1,4 +1,4 @@
-import { darkTheme, defaultTheme, lightTheme, SwapWidgetSkeleton } from '@uniswap/widgets'
+import { darkTheme, defaultTheme, lightTheme, SwapWidgetSkeleton } from '@pollum-io/widgets'
 import { useEffect } from 'react'
 import { useValue } from 'react-cosmos/fixture'
 import { WIDGET_BREAKPOINTS } from 'theme/breakpoints'

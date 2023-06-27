@@ -4,9 +4,9 @@
  * Provides renderComponent and renderHook utilities, which use test-specific providers to mock out
  * a functioning environment.
  */
+import TokenList from '@pollum-io/default-token-list'
 import { render, RenderHookOptions, RenderOptions, waitForOptions } from '@testing-library/react'
 import { renderHook as renderHookBase, waitFor as waitForBase } from '@testing-library/react'
-import TokenList from '@uniswap/default-token-list'
 import { MetaMask } from '@web3-react/metamask'
 import { Network } from '@web3-react/network'
 import { Provider as DialogProvider } from 'components/Dialog'

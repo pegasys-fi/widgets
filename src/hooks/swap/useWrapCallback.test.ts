@@ -1,5 +1,5 @@
 import { parseEther } from '@ethersproject/units'
-import { CurrencyAmount } from '@uniswap/sdk-core'
+import { CurrencyAmount } from '@pollum-io/sdk-core'
 import { SupportedChainId } from 'constants/chains'
 import { ExtendedEther } from 'constants/tokens'
 import { Field, stateAtom, swapEventHandlersAtom } from 'state/swap'
@@ -8,7 +8,7 @@ import { renderHook, waitFor } from 'test'
 
 import useWrapCallback from './useWrapCallback'
 
-const ETH = ExtendedEther.onChain(SupportedChainId.MAINNET)
+const ETH = ExtendedEther.onChain(SupportedChainId.ROLLUX)
 const WETH = ETH.wrapped
 const AMOUNT = CurrencyAmount.fromRawAmount(ETH, parseEther('1').toString())
 const WRAP_TRANSACTION_INFO = {

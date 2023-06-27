@@ -31,7 +31,7 @@ export default function EtherscanLink({
 }: EtherscanLinkProps) {
   const { chainId } = useWeb3React()
   const url = useMemo(
-    () => data && getExplorerLink(chainId || SupportedChainId.MAINNET, data, type),
+    () => data && getExplorerLink(chainId || SupportedChainId.ROLLUX, data, type),
     [chainId, data, type]
   )
 

@@ -11,79 +11,9 @@ import { SupportedChainId } from './chains'
  * These "Safe" URLs are listed first, followed by other fallback URLs, which are taken from chainlist.org.
  */
 export const JSON_RPC_FALLBACK_ENDPOINTS: Record<SupportedChainId, string[]> = {
-  [SupportedChainId.MAINNET]: [
+  [SupportedChainId.ROLLUX_TANENBAUM]: [
     // "Safe" URLs
-    'https://cloudflare-eth.com',
-    // "Fallback" URLs
-    'https://rpc.ankr.com/eth',
-    'https://eth-mainnet.public.blastapi.io',
+    'https://rpc-tanenbaum.rollux.com/',
   ],
-  [SupportedChainId.ROPSTEN]: [
-    // "Fallback" URLs
-    'https://rpc.ankr.com/eth_ropsten',
-  ],
-  [SupportedChainId.RINKEBY]: [
-    // "Fallback" URLs
-    'https://rinkeby-light.eth.linkpool.io/',
-  ],
-  [SupportedChainId.GOERLI]: [
-    // "Safe" URLs
-    'https://rpc.goerli.mudit.blog/',
-    // "Fallback" URLs
-    'https://rpc.ankr.com/eth_goerli',
-  ],
-  [SupportedChainId.KOVAN]: [
-    // "Fallback" URLs
-    'https://eth-kovan.public.blastapi.io',
-  ],
-  [SupportedChainId.POLYGON]: [
-    // "Safe" URLs
-    'https://polygon-rpc.com/',
-  ],
-  [SupportedChainId.POLYGON_MUMBAI]: [
-    // "Safe" URLs
-    'https://matic-mumbai.chainstacklabs.com',
-    'https://rpc-mumbai.maticvigil.com',
-    'https://matic-testnet-archive-rpc.bwarelabs.com',
-  ],
-  [SupportedChainId.ARBITRUM_ONE]: [
-    // "Safe" URLs
-    'https://arb1.arbitrum.io/rpc',
-    // "Fallback" URLs
-    'https://arbitrum.public-rpc.com',
-  ],
-  [SupportedChainId.ARBITRUM_RINKEBY]: [
-    // "Safe" URLs
-    'https://rinkeby.arbitrum.io/rpc',
-  ],
-  [SupportedChainId.OPTIMISM]: [
-    // "Safe" URLs
-    'https://mainnet.optimism.io/',
-    // "Fallback" URLs
-    'https://rpc.ankr.com/optimism',
-  ],
-  [SupportedChainId.OPTIMISM_GOERLI]: [
-    // "Safe" URLs
-    'https://goerli.optimism.io',
-  ],
-  [SupportedChainId.CELO]: [
-    // "Safe" URLs
-    'https://forno.celo.org',
-  ],
-  [SupportedChainId.CELO_ALFAJORES]: [
-    // "Safe" URLs
-    'https://alfajores-forno.celo-testnet.org',
-  ],
-  [SupportedChainId.BNB]: [
-    // "Safe" URLs
-    'https://endpoints.omniatech.io/v1/bsc/mainnet/public',
-    'https://bsc-mainnet.gateway.pokt.network/v1/lb/6136201a7bad1500343e248d',
-    'https://1rpc.io/bnb',
-    'https://bsc-dataseed3.binance.org',
-    'https://bsc-dataseed2.defibit.io',
-    'https://bsc-dataseed1.ninicoin.io',
-    'https://binance.nodereal.io',
-    'https://bsc-dataseed4.defibit.io',
-    'https://rpc.ankr.com/bsc',
-  ],
+  [SupportedChainId.ROLLUX]: ['https://rpc.rollux.com/'],
 }

@@ -1,5 +1,5 @@
-import { TradeType } from '@uniswap/sdk-core'
-import { DAI, USDC_MAINNET } from 'constants/tokens'
+import { TradeType } from '@pollum-io/sdk-core'
+import { DAI_ROLLUX, USDC_ROLLUX } from 'constants/tokens'
 import { SwapInfoProvider } from 'hooks/swap/useSwapInfo'
 import Module from 'module'
 import { Field, stateAtom } from 'state/swap'
@@ -49,8 +49,8 @@ describe('ToolbarUnconnected', () => {
             stateAtom,
             {
               type: TradeType.EXACT_INPUT,
-              [Field.INPUT]: DAI,
-              [Field.OUTPUT]: USDC_MAINNET,
+              [Field.INPUT]: DAI_ROLLUX,
+              [Field.OUTPUT]: USDC_ROLLUX,
               amount: '1',
             },
           ],

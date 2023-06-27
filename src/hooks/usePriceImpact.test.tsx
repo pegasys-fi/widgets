@@ -1,5 +1,5 @@
+import { CurrencyAmount, TradeType } from '@pollum-io/sdk-core'
 import { formatPriceImpact } from '@uniswap/conedison/format'
-import { CurrencyAmount, TradeType } from '@uniswap/sdk-core'
 import { InterfaceTrade } from 'state/routing/types'
 import { renderHook } from 'test'
 import { buildSingleV3Route, DAI, USDC } from 'test/utils'
@@ -12,7 +12,7 @@ const dai = CurrencyAmount.fromRawAmount(DAI, 1)
 describe('usePriceImpact', () => {
   it('returns price impact warning for a low liquidity pool', () => {
     const trade: InterfaceTrade = new InterfaceTrade({
-      v2Routes: [],
+      v1Routes: [],
       v3Routes: [buildSingleV3Route(usdc, dai)],
       tradeType: TradeType.EXACT_INPUT,
     })

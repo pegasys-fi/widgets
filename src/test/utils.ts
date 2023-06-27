@@ -1,5 +1,5 @@
-import { CurrencyAmount, Token } from '@uniswap/sdk-core'
-import { FeeAmount, Pool, Route as RouteV3 } from '@uniswap/v3-sdk'
+import { CurrencyAmount, Token } from '@pollum-io/sdk-core'
+import { FeeAmount, Pool, Route as RouteV3 } from '@pollum-io/v3-sdk'
 
 // helper function to make amounts more readable
 export const amount = (raw: TemplateStringsArray) => (parseInt(raw[0]) * 1e6).toString()

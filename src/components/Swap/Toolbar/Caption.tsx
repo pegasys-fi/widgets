@@ -1,6 +1,6 @@
 import { Trans } from '@lingui/macro'
+import { Currency, CurrencyAmount } from '@pollum-io/sdk-core'
 import { Placement } from '@popperjs/core'
-import { Currency, CurrencyAmount } from '@uniswap/sdk-core'
 import LoadingGifLight from 'assets/images/lightLoading.gif'
 import Row from 'components/Row'
 import Tooltip from 'components/Tooltip'

@@ -2,9 +2,19 @@
   "extends": "./tsconfig.build.json",
   "compilerOptions": {
     "paths": {
-      "@uniswap/widgets": ["index"]
+      "@pollum-io/widgets": [
+        "index"
+      ]
     },
-    "types": ["jest", "jest-extended"]
+    "types": [
+      "jest",
+      "jest-extended",
+      "node"
+    ]
   },
-  "include": ["src/", "test/", "e2e/"]
+  "include": [
+    "src/",
+    "test/",
+    "e2e/"
+  ]
 }

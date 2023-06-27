@@ -1,6 +1,6 @@
-import { tokens } from '@uniswap/default-token-list'
-import { Currency, TradeType } from '@uniswap/sdk-core'
-import { Field, SupportedChainId, SwapWidget } from '@uniswap/widgets'
+import { tokens } from '@pollum-io/default-token-list'
+import { Currency, TradeType } from '@pollum-io/sdk-core'
+import { Field, SupportedChainId, SwapWidget } from '@pollum-io/widgets'
 import Row from 'components/Row'
 import { useCallback, useMemo, useState } from 'react'
 
@@ -43,14 +43,14 @@ function Fixture() {
   )
   const inputToken = useOption('input', {
     options: currencies,
-    defaultValue: SupportedChainId[SupportedChainId.MAINNET],
+    defaultValue: SupportedChainId[SupportedChainId.ROLLUX],
   })
   const outputToken = useOption('output', {
     options: currencies,
-    defaultValue: `${SupportedChainId[SupportedChainId.MAINNET]} USDC`,
+    defaultValue: `${SupportedChainId[SupportedChainId.ROLLUX]} USDC`,
   })
 
-  const connector = useProvider(SupportedChainId.MAINNET)
+  const connector = useProvider(SupportedChainId.ROLLUX)
 
   const eventHandlers = useMemo(
     // eslint-disable-next-line react-hooks/rules-of-hooks

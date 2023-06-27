@@ -1,4 +1,4 @@
-import { defaultTheme, SwapEventHandlers, TransactionEventHandlers, WidgetEventHandlers } from '@uniswap/widgets'
+import { defaultTheme, SwapEventHandlers, TransactionEventHandlers, WidgetEventHandlers } from '@pollum-io/widgets'
 import Row from 'components/Row'
 import { useState } from 'react'
 import styled from 'styled-components/macro'

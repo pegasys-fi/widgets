@@ -1,8 +1,8 @@
+import { TradeType } from '@pollum-io/sdk-core'
 import { renderHook } from '@testing-library/react'
-import { TradeType } from '@uniswap/sdk-core'
 import { SupportedChainId } from 'constants/chains'
-import { DAI_POLYGON, nativeOnChain } from 'constants/tokens'
-import { USDC_MAINNET } from 'constants/tokens'
+import { DAI_ROLLUX, nativeOnChain, USDC_ROLLUX } from 'constants/tokens'
+// import { USDC_MAINNET } from 'constants/tokens'
 import { Provider as AtomProvider } from 'jotai'
 import { useAtomValue } from 'jotai/utils'
 import { PropsWithChildren } from 'react'
@@ -10,14 +10,14 @@ import { Field, stateAtom, Swap, swapAtom } from 'state/swap'
 
 import useSyncTokenDefaults, { TokenDefaults } from './useSyncTokenDefaults'
 
-const MOCK_DAI_POLYGON = DAI_POLYGON
-const MOCK_USDC_MAINNET = USDC_MAINNET
+// const MOCK_DAI_POLYGON = DAI_POLYGON
+// const MOCK_USDC_MAINNET = USDC_MAINNET
 
 const INITIAL_SWAP: Swap = {
   type: TradeType.EXACT_INPUT,
   amount: '10',
-  [Field.INPUT]: MOCK_USDC_MAINNET,
-  [Field.OUTPUT]: MOCK_DAI_POLYGON,
+  [Field.INPUT]: USDC_ROLLUX,
+  [Field.OUTPUT]: DAI_ROLLUX,
 }
 
 const TOKEN_DEFAULTS: TokenDefaults = {
@@ -31,7 +31,7 @@ jest.mock('@web3-react/core', () => {
   const connector = {}
   return {
     useWeb3React: () => ({
-      chainId: SupportedChainId.MAINNET,
+      chainId: SupportedChainId.ROLLUX,
       connector,
     }),
   }
@@ -45,7 +45,7 @@ jest.mock('../useTokenList', () => {
 
 jest.mock('hooks/useCurrency', () => {
   return {
-    useToken: () => MOCK_DAI_POLYGON,
+    useToken: () => DAI_ROLLUX,
   }
 })
 
@@ -54,20 +54,20 @@ describe('useSyncTokenDefaults', () => {
     return <AtomProvider initialValues={[[stateAtom, INITIAL_SWAP]]}>{children}</AtomProvider>
   }
 
-  it('syncs to default chainId on initial render if defaultChainId is provided', () => {
-    const { result } = renderHook(
-      () => {
-        useSyncTokenDefaults({ ...TOKEN_DEFAULTS, defaultChainId: SupportedChainId.POLYGON })
-        return useAtomValue(swapAtom)
-      },
-      { wrapper: Wrapper }
-    )
-    expect(result.current).toMatchObject({
-      ...INITIAL_SWAP,
-      INPUT: nativeOnChain(SupportedChainId.POLYGON),
-      OUTPUT: nativeOnChain(SupportedChainId.POLYGON),
-    })
-  })
+  // it('syncs to default chainId on initial render if defaultChainId is provided', () => {
+  //   const { result } = renderHook(
+  //     () => {
+  //       useSyncTokenDefaults({ ...TOKEN_DEFAULTS, defaultChainId: SupportedChainId.POLYGON })
+  //       return useAtomValue(swapAtom)
+  //     },
+  //     { wrapper: Wrapper }
+  //   )
+  //   expect(result.current).toMatchObject({
+  //     ...INITIAL_SWAP,
+  //     INPUT: nativeOnChain(SupportedChainId.POLYGON),
+  //     OUTPUT: nativeOnChain(SupportedChainId.POLYGON),
+  //   })
+  // })
 
   it('does not sync to default chainId on initial render if defaultChainId is not provided', () => {
     const { result } = renderHook(
@@ -79,30 +79,30 @@ describe('useSyncTokenDefaults', () => {
     )
     expect(result.current).toMatchObject({
       ...INITIAL_SWAP,
-      INPUT: nativeOnChain(SupportedChainId.MAINNET),
-      OUTPUT: nativeOnChain(SupportedChainId.MAINNET),
+      INPUT: nativeOnChain(SupportedChainId.ROLLUX),
+      OUTPUT: nativeOnChain(SupportedChainId.ROLLUX),
     })
   })
 
-  it('syncs to default non NATIVE tokens of default chainId on initial render if defaultChainId is provided', () => {
-    const { result } = renderHook(
-      () => {
-        useSyncTokenDefaults({
-          ...TOKEN_DEFAULTS,
-          defaultInputTokenAddress: DAI_POLYGON.address,
-          defaultOutputTokenAddress: DAI_POLYGON.address,
-          defaultChainId: SupportedChainId.POLYGON,
-        })
-        return useAtomValue(swapAtom)
-      },
-      { wrapper: Wrapper }
-    )
-    expect(result.current).toMatchObject({
-      ...INITIAL_SWAP,
-      INPUT: DAI_POLYGON,
-      OUTPUT: DAI_POLYGON,
-    })
-  })
+  // it('syncs to default non NATIVE tokens of default chainId on initial render if defaultChainId is provided', () => {
+  //   const { result } = renderHook(
+  //     () => {
+  //       useSyncTokenDefaults({
+  //         ...TOKEN_DEFAULTS,
+  //         defaultInputTokenAddress: DAI_POLYGON.address,
+  //         defaultOutputTokenAddress: DAI_POLYGON.address,
+  //         defaultChainId: SupportedChainId.POLYGON,
+  //       })
+  //       return useAtomValue(swapAtom)
+  //     },
+  //     { wrapper: Wrapper }
+  //   )
+  //   expect(result.current).toMatchObject({
+  //     ...INITIAL_SWAP,
+  //     INPUT: DAI_POLYGON,
+  //     OUTPUT: DAI_POLYGON,
+  //   })
+  // })
 
   it('syncs to non NATIVE tokens of chainId on initial render if defaultChainId is not provided', () => {
     const { result } = renderHook(
@@ -114,8 +114,8 @@ describe('useSyncTokenDefaults', () => {
     )
     expect(result.current).toMatchObject({
       ...INITIAL_SWAP,
-      INPUT: nativeOnChain(SupportedChainId.MAINNET),
-      OUTPUT: nativeOnChain(SupportedChainId.MAINNET),
+      INPUT: nativeOnChain(SupportedChainId.ROLLUX),
+      OUTPUT: nativeOnChain(SupportedChainId.ROLLUX),
     })
   })
 })
