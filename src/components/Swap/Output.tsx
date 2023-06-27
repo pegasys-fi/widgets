@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { useSwapCurrency, useSwapInfo } from 'hooks/swap'
 import useCurrencyColor from 'hooks/useCurrencyColor'
 import { useIsWideWidget } from 'hooks/useWidgetWidth'
@@ -44,7 +43,7 @@ export default function Output() {
         field={Field.OUTPUT}
         fiatValueChange={fiatValueChange}
         hasColor={hasColor}
-        subheader={t`You receive`}
+        // subheader={t`You receive`}
       />
     </DynamicThemeProvider>
   )

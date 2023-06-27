@@ -1,7 +1,7 @@
 import { AlertTriangle, Icon, LargeIcon } from 'icons'
 import { ReactNode, useMemo } from 'react'
 import styled, { css, keyframes } from 'styled-components/macro'
-import { AnimationSpeed, Color, ThemedText } from 'theme'
+import { AnimationSpeed, Color, Colors, ThemedText } from 'theme'
 
 import Button from './Button'
 import Row, { RowProps } from './Row'
@@ -68,6 +68,8 @@ export const Overlay = styled(Row)<{ hasAction: boolean; narrow?: boolean }>`
   transition: padding ${AnimationSpeed.Medium} ease-out;
   ${({ hasAction }) => hasAction && actionCss}
 `
+
+export type ActionButtonColor = keyof Pick<Colors, 'accent' | 'accentSoft' | 'warningSoft' | 'interactive' | 'critical'>
 
 export interface Action {
   message: ReactNode
