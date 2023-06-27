@@ -8,7 +8,7 @@ const Input = styled.input`
   -webkit-appearance: none;
   align-items: center;
   appearance: none;
-  background: ${({ theme }) => theme.interactive};
+  background: ${({ theme }) => theme.accentActionSoft};
   border: none;
   border-radius: ${({ theme }) => theme.borderRadius.medium}rem;
   cursor: pointer;
@@ -38,12 +38,12 @@ const Input = styled.input`
   }
 
   :checked:before {
-    background-color: ${({ theme }) => theme.accent};
+    background-color: ${({ theme }) => theme.accentActive};
     margin-left: 1.75rem;
   }
 
   :hover:checked:before {
-    background-color: ${({ theme }) => transparentize(0.3, theme.accent)};
+    background-color: ${({ theme }) => transparentize(0.3, theme.accentActive)};
   }
 
   :checked:after {

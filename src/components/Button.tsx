@@ -7,7 +7,6 @@ export const BaseButton = styled.button`
   background-color: transparent;
   border: none;
   border-radius: 0.5rem;
-  color: currentColor;
   cursor: pointer;
   font-size: inherit;
   font-weight: inherit;
@@ -27,12 +26,11 @@ export const BaseButton = styled.button`
 `
 
 export default styled(BaseButton)<{ color?: Color }>`
-  background-color: ${({ color = 'interactive', theme }) => theme[color]};
+  background-color: ${({ color = 'accentActionSoft', theme }) => theme[color]};
   border: 1px solid transparent;
-  color: ${({ color = 'interactive', theme }) => color === 'interactive' && theme.onInteractive};
 
   :enabled:hover {
-    background-color: ${({ color = 'interactive', theme }) => theme.onHover(theme[color])};
+    background-color: ${({ color = 'accentActionSoft', theme }) => theme.onHover(theme[color])};
   }
 `
 
@@ -47,9 +45,9 @@ const transparentButton = (defaultColor: Color) => styled(BaseButton)<{ color?: 
   }
 `
 
-export const TextButton = transparentButton('accent')
+export const TextButton = transparentButton('accentActive')
 
-const SecondaryButton = transparentButton('secondary')
+const SecondaryButton = transparentButton('accentActive')
 
 const StyledIconButton = styled(SecondaryButton)`
   height: 1rem;
