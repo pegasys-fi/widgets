@@ -3,7 +3,7 @@ import { AddressZero } from '@ethersproject/constants'
 import { Contract } from '@ethersproject/contracts'
 import { JsonRpcProvider, JsonRpcSigner } from '@ethersproject/providers'
 import { Token } from '@pollum-io/sdk-core'
-import { FeeAmount } from '@pollum-io/v2-sdk'
+import { FeeAmount } from '@pollum-io/v3-sdk'
 import { ChainTokenMap } from 'hooks/useTokenList/utils'
 
 // returns the checksummed address if the address is valid, otherwise returns false

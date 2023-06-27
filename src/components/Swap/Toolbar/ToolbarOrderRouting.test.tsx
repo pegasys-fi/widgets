@@ -21,7 +21,7 @@ describe('ToolbarOrderRouting', () => {
         trade={
           new InterfaceTrade({
             v1Routes: [],
-            v2Routes: [testRoute],
+            v3Routes: [testRoute],
             tradeType: TradeType.EXACT_INPUT,
           })
         }
@@ -40,7 +40,7 @@ describe('ToolbarOrderRouting', () => {
         trade={
           new InterfaceTrade({
             v1Routes: [],
-            v2Routes: [buildMultiV3Route(usdc, dai)],
+            v3Routes: [buildMultiV3Route(usdc, dai)],
             tradeType: TradeType.EXACT_INPUT,
           })
         }
@@ -59,7 +59,7 @@ describe('ToolbarOrderRouting', () => {
         trade={
           new InterfaceTrade({
             v1Routes: [],
-            v2Routes: [buildMultiV3Route(usdc, dai), buildSingleV3Route(usdc, dai)],
+            v3Routes: [buildMultiV3Route(usdc, dai), buildSingleV3Route(usdc, dai)],
             tradeType: TradeType.EXACT_INPUT,
           })
         }

@@ -1,7 +1,7 @@
 import { MixedRouteSDK } from '@pollum-io/router-sdk'
 import { Currency, CurrencyAmount, Token } from '@pollum-io/sdk-core'
 import { Pair, Route as V2Route } from '@pollum-io/v1-sdk'
-import { FeeAmount, Pool, Route as V3Route } from '@pollum-io/v2-sdk'
+import { FeeAmount, Pool, Route as V3Route } from '@pollum-io/v3-sdk'
 // import { isPolygonChain } from 'constants/chains'
 import { nativeOnChain } from 'constants/tokens'
 import { PoolType, SwapRouterNativeAssets } from 'hooks/routing/types'
@@ -19,12 +19,12 @@ export function computeRoutes(
   routes: QuoteData['route']
 ):
   | {
-      routev2: V3Route<Currency, Currency> | null
-      routev1: V2Route<Currency, Currency> | null
-      mixedRoute: MixedRouteSDK<Currency, Currency> | null
-      inputAmount: CurrencyAmount<Currency>
-      outputAmount: CurrencyAmount<Currency>
-    }[]
+    routev3: V3Route<Currency, Currency> | null
+    routev1: V2Route<Currency, Currency> | null
+    mixedRoute: MixedRouteSDK<Currency, Currency> | null
+    inputAmount: CurrencyAmount<Currency>
+    outputAmount: CurrencyAmount<Currency>
+  }[]
   | undefined {
   if (routes.length === 0) return []
 
@@ -51,7 +51,7 @@ export function computeRoutes(
       const isOnlyV3 = isVersionedRoute<V3PoolInRoute>(PoolType.V3Pool, route)
 
       return {
-        routev2: isOnlyV3 ? new V3Route(route.map(parsePool), parsedCurrencyIn, parsedCurrencyOut) : null,
+        routev3: isOnlyV3 ? new V3Route(route.map(parsePool), parsedCurrencyIn, parsedCurrencyOut) : null,
         routev1: isOnlyV2 ? new V2Route(route.map(parsePair), parsedCurrencyIn, parsedCurrencyOut) : null,
         mixedRoute:
           !isOnlyV3 && !isOnlyV2
@@ -84,13 +84,13 @@ export function transformQuoteToTradeResult(args: GetQuoteArgs, data: QuoteData)
           inputAmount,
           outputAmount,
         })) ?? [],
-    v2Routes:
+    v3Routes:
       routes
         ?.filter(
-          (r): r is typeof routes[0] & { routev2: NonNullable<typeof routes[0]['routev2']> } => r.routev2 !== null
+          (r): r is typeof routes[0] & { routev3: NonNullable<typeof routes[0]['routev3']> } => r.routev3 !== null
         )
-        .map(({ routev2, inputAmount, outputAmount }) => ({
-          routev2,
+        .map(({ routev3, inputAmount, outputAmount }) => ({
+          routev3,
           inputAmount,
           outputAmount,
         })) ?? [],

@@ -13,7 +13,7 @@ export const USDC_ROLLUX_TANENBAUM = new Token(
 
 export const USDC_ROLLUX = new Token(
   SupportedChainId.ROLLUX,
-  '0xdBB59E294A93487822d1d7e164609Cd59d396fb5',
+  '0x368433CaC2A0B8D76E64681a9835502a1f2A8A30',
   6,
   'USDC',
   'USD//C'
@@ -21,7 +21,7 @@ export const USDC_ROLLUX = new Token(
 
 export const DAI_ROLLUX = new Token(
   SupportedChainId.ROLLUX,
-  '0x5de737495Fe261cc9d6D32E00196d5e4ef43594D',
+  '0x5B0aC6194499621630ddebb30c4aBE37037b30Ec',
   18,
   'DAI',
   'Dai Stablecoin'
@@ -34,7 +34,7 @@ export const USDC: { [chainId in SupportedChainId]: Token } = {
 
 export const USDT_ROLLUX = new Token(
   SupportedChainId.ROLLUX,
-  '0x4DFc340487bbec780bA8458e614b732d7226AE8f',
+  '0x28c9c7Fb3fE3104d2116Af26cC8eF7905547349c',
   6,
   'USDT',
   'Tether USD'

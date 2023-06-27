@@ -22,7 +22,7 @@ export function transformSwapRouteToGetQuoteResult({
   for (const subRoute of route) {
     const { amount, quote, tokenPath } = subRoute
 
-    if (subRoute.protocol === Protocol.V2) {
+    if (subRoute.protocol === Protocol.V3) {
       const pools = subRoute.route.pools
       const curRoute: V3PoolInRoute[] = []
       for (let i = 0; i < pools.length; i++) {

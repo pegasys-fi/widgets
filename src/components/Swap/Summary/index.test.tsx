@@ -56,7 +56,7 @@ function Summary({ allowance }: { allowance: usePermit2Allowance.Allowance }) {
       trade={
         new InterfaceTrade({
           v1Routes: [],
-          v2Routes: [buildMultiV3Route(usdc, dai), buildSingleV3Route(usdc, dai)],
+          v3Routes: [buildMultiV3Route(usdc, dai), buildSingleV3Route(usdc, dai)],
           tradeType: TradeType.EXACT_INPUT,
         })
       }

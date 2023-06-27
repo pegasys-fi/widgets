@@ -5,12 +5,15 @@ type AddressMap = { [chainId: number]: string }
 
 export const UNI_ADDRESS: AddressMap = {
   [SupportedChainId.ROLLUX_TANENBAUM]: '0x817C777DEf2Fd6ffE2492C6CD124985C78Ee9235',
-  [SupportedChainId.ROLLUX]: '0x8e59ED2DF847Ad3d19624480Db5B2B3Ba27fC9a8',
+  [SupportedChainId.ROLLUX]: '0x48023b16c3e81AA7F6eFFbdEB35Bb83f4f31a8fd',
 }
 
-export const MULTICALL_ADDRESS: AddressMap = constructSameAddressMap('0xcba1683e1f0ba5061573cce7c1a73a80c3827cef')
+export const MULTICALL_ADDRESS: AddressMap = {
+  [SupportedChainId.ROLLUX]: '0x48023b16c3e81AA7F6eFFbdEB35Bb83f4f31a8fd',
+  [SupportedChainId.ROLLUX_TANENBAUM]: '0x92D073bcb65Acd28aE49c8b749e7b44615948db3'
+}
 
-export const SWAP_ROUTER_ADDRESSES: AddressMap = constructSameAddressMap('0xfB2529aE4D41ae6c8B6782a5CBb56E24141133D8')
+export const SWAP_ROUTER_ADDRESSES: AddressMap = constructSameAddressMap('0xd93c60A8E0F53361524698Cce1BBb65E080b8976')
 
 export const ARGENT_WALLET_DETECTOR_ADDRESS: AddressMap = {}
 

@@ -1,5 +1,5 @@
 import { Currency, TradeType } from '@pollum-io/sdk-core'
-import { FeeOptions } from '@pollum-io/v2-sdk'
+import { FeeOptions } from '@pollum-io/v3-sdk'
 import { SupportedChainId } from 'constants/chains'
 import { nativeOnChain } from 'constants/tokens'
 import { atom } from 'jotai'

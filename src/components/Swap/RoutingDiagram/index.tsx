@@ -1,7 +1,7 @@
 import { Trans } from '@lingui/macro'
 import { Protocol } from '@pollum-io/router-sdk'
 import { Currency, CurrencyAmount, Token } from '@pollum-io/sdk-core'
-import { FeeAmount } from '@pollum-io/v2-sdk'
+import { FeeAmount } from '@pollum-io/v3-sdk'
 import { formatCurrencyAmount, NumberType } from '@uniswap/conedison/format'
 import { ReactComponent as DotLine } from 'assets/svg/dot_line.svg'
 import Column from 'components/Column'

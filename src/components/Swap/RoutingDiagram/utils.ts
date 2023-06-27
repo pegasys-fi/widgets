@@ -1,6 +1,6 @@
 import { Protocol } from '@pollum-io/router-sdk'
 import { Currency, Percent } from '@pollum-io/sdk-core'
-import { FeeAmount } from '@pollum-io/v2-sdk'
+import { FeeAmount } from '@pollum-io/v3-sdk'
 import { InterfaceTrade } from 'state/routing/types'
 import { getFeeAmount } from 'utils/prices'
 import { isExactInput } from 'utils/tradeType'

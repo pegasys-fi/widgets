@@ -12,7 +12,7 @@ const dai = CurrencyAmount.fromRawAmount(DAI, 1)
 describe('usePriceImpact', () => {
   it('returns price impact warning for a low liquidity pool', () => {
     const trade: InterfaceTrade = new InterfaceTrade({
-      v2Routes: [],
+      v1Routes: [],
       v3Routes: [buildSingleV3Route(usdc, dai)],
       tradeType: TradeType.EXACT_INPUT,
     })
