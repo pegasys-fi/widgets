@@ -4,6 +4,7 @@ import './external'
 import { mix, rgba, transparentize } from 'polished'
 import { createContext, PropsWithChildren, useContext, useMemo, useState } from 'react'
 import { DefaultTheme, ThemeProvider as StyledProvider } from 'styled-components/macro'
+import { opacify } from 'utils/opacify'
 
 import { Layer } from './layer'
 import type { Colors, Theme, ThemeBorderRadius } from './theme'
@@ -17,8 +18,18 @@ export * as ThemedText from './type'
 const white = 'hsl(0, 0%, 100%)'
 const black = 'hsl(0, 0%, 0%)'
 
-const brandLight = 'hsl(328, 97%, 53%)'
-const brandDark = 'hsl(221, 96%, 64%)'
+const brandLight = '#665EE1'
+const brandDark = '#00D9EF'
+
+const blueButton = '#153D6F'
+const deep = '#081120'
+const input = '#0B172C'
+const gray900 = '#171923'
+const cyanText = '#00D9EF'
+const purpleMain = '#665EE1'
+const blue400 = '#4299E1'
+const gray50 = '#F7FAFC'
+
 export const brand = brandLight
 
 const stateColors = {
@@ -35,7 +46,7 @@ export const lightTheme: Colors = {
   accent: brandLight,
   accentSoft: rgba(brandLight, 0.24),
   container: 'hsl(0, 0%, 100%)',
-  module: 'hsl(231, 54%, 97%)',
+  module: gray50,
   interactive: 'hsl(227, 70%, 95%)',
   outline: 'hsla(225, 18%, 44%, 0.24)',
   dialog: white,
@@ -48,7 +59,7 @@ export const lightTheme: Colors = {
   hint: 'hsl(226, 24%, 67%)',
   onInteractive: black,
 
-  deepShadow: 'hsla(234, 17%, 24%, 0.04), hsla(234, 17%, 24%, 0.02), hsla(234, 17%, 24%, 0.04)',
+  deepShadow: `0px 10px 24px ${opacify(24, '#00D9EF')}, 10px 0px 24px ${opacify(24, '#8C15E8')}`,
   networkDefaultShadow: 'hsla(328, 97%, 53%, 0.12)',
 
   // state
@@ -57,14 +68,19 @@ export const lightTheme: Colors = {
   error: 'hsla(356, 95%, 57%, 1)',
 
   currentColor: 'currentColor',
+  accentActive: purpleMain,
+  backgroundScrim: opacify(60, gray900),
+  accentActionSoft: opacify(12, purpleMain),
+  accentActiveSoft: opacify(24, blue400),
+  loadingGif: 'light',
 }
 
 export const darkTheme: Colors = {
   // surface
-  accent: brandDark,
+  accent: blueButton,
   accentSoft: rgba(brandDark, 0.24),
   container: 'hsla(224, 37%, 8%, 1)',
-  module: 'hsl(222, 37%, 12%)',
+  module: input,
   interactive: 'hsla(223, 28%, 22%, 1)',
   outline: 'hsl(224, 33%, 16%)',
   dialog: black,
@@ -77,7 +93,7 @@ export const darkTheme: Colors = {
   hint: 'hsla(225, 18%, 44%)',
   onInteractive: white,
 
-  deepShadow: 'hsla(0, 0%, 0%, 0.32), hsla(0, 0%, 0%, 0.24), hsla(0, 0%, 0%, 0.24)',
+  deepShadow: `0px 10px 24px ${opacify(24, '#00D9EF')}, 10px 0px 24px ${opacify(24, '#8C15E8')}`,
   networkDefaultShadow: 'hsla(221, 96%, 64%, 0.16)',
 
   // state
@@ -86,6 +102,11 @@ export const darkTheme: Colors = {
   error: 'hsla(5, 97%, 71%, 1)',
 
   currentColor: 'currentColor',
+  accentActive: cyanText,
+  backgroundScrim: opacify(72, deep),
+  accentActionSoft: opacify(24, blueButton),
+  accentActiveSoft: opacify(24, cyanText),
+  loadingGif: 'dark',
 }
 
 /**

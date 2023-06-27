@@ -18,7 +18,7 @@ import { getTokenPath, RoutingDiagramEntry } from './utils'
 
 const StyledAutoRouterLabel = styled(ThemedText.ButtonSmall)`
   @supports (-webkit-background-clip: text) and (-webkit-text-fill-color: transparent) {
-    background-image: linear-gradient(90deg, #2172e5 0%, #54e521 163.16%);
+    background-image: linear-gradient(90deg, #19ebce 0%, #8a15e6 84.28%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }

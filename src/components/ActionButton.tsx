@@ -1,14 +1,16 @@
 import { AlertTriangle, Icon, LargeIcon } from 'icons'
 import { ReactNode, useMemo } from 'react'
 import styled, { css, keyframes } from 'styled-components/macro'
-import { AnimationSpeed, Color, Colors, ThemedText } from 'theme'
+import { AnimationSpeed, Color, ThemedText } from 'theme'
 
 import Button from './Button'
 import Row, { RowProps } from './Row'
 import Tooltip from './Tooltip'
 
 const StyledButton = styled(Button)<{ shouldUseDisabledColor?: boolean; narrow?: boolean }>`
+  background-color: ${({ theme }) => theme.accentActionSoft};
   border-radius: ${({ theme, narrow }) => (narrow ? theme.borderRadius.small : theme.borderRadius.medium)}rem;
+  color: ${({ theme }) => theme.accentActive};
   flex-grow: 1;
   max-height: ${({ narrow }) => (narrow ? '2.5rem' : '3.5rem')};
   transition: background-color ${AnimationSpeed.Medium} ease-out, border-radius ${AnimationSpeed.Medium} ease-out,
@@ -78,10 +80,7 @@ export interface Action {
   disableButton?: boolean
 }
 
-export type ActionButtonColor = keyof Pick<Colors, 'accent' | 'accentSoft' | 'warningSoft' | 'interactive' | 'critical'>
-
 interface BaseProps {
-  color?: ActionButtonColor
   action?: Action
   wrapperProps?: Omit<React.HtmlHTMLAttributes<HTMLDivElement>, keyof RowProps>
   shouldUseDisabledColor?: boolean
@@ -91,7 +90,6 @@ interface BaseProps {
 export type ActionButtonProps = BaseProps & Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, keyof BaseProps>
 
 export default function ActionButton({
-  color = 'accent',
   disabled,
   shouldUseDisabledColor = true,
   action,
@@ -101,23 +99,6 @@ export default function ActionButton({
   narrow,
   ...rest
 }: ActionButtonProps) {
-  const textColor = useMemo(() => {
-    if (disabled) {
-      return 'primary'
-    }
-    switch (color) {
-      case 'accent':
-      case 'critical':
-        return 'onAccent'
-      case 'accentSoft':
-        return 'accent'
-      case 'warningSoft':
-        return 'warning'
-      default:
-        return 'currentColor'
-    }
-  }, [color, disabled])
-
   const buttonSize = useMemo(() => (narrow ? 'small' : action ? 'medium' : 'large'), [narrow, action])
 
   return (
@@ -131,14 +112,12 @@ export default function ActionButton({
     >
       {!action?.hideButton && (
         <StyledButton
-          color={color}
           disabled={disabled || action?.disableButton}
           shouldUseDisabledColor={shouldUseDisabledColor}
           onClick={action?.onClick || onClick}
           narrow={narrow}
-          {...rest}
         >
-          <ThemedText.TransitionButton buttonSize={buttonSize} color={textColor}>
+          <ThemedText.TransitionButton buttonSize={buttonSize}>
             {action?.children || children}
           </ThemedText.TransitionButton>
         </StyledButton>
