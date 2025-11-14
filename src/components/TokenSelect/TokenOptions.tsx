@@ -4,12 +4,15 @@ import useCurrencyBalance from 'hooks/useCurrencyBalance'
 import useNativeEvent from 'hooks/useNativeEvent'
 import useScrollbar from 'hooks/useScrollbar'
 import {
+  Component,
   ComponentClass,
   CSSProperties,
   forwardRef,
   KeyboardEvent,
+  LegacyRef,
   memo,
   ReactNode,
+  Ref,
   SyntheticEvent,
   useCallback,
   useEffect,
@@ -39,8 +42,26 @@ const TokenButton = styled(BaseButton)`
 const ITEM_SIZE = 56
 const MIN_VISIBLE_TOKENS = 6
 type ItemData = Currency[]
-interface FixedSizeTokenList extends FixedSizeList<ItemData>, ComponentClass<FixedSizeListProps<ItemData>> {}
-const TokenList = styled(FixedSizeList as unknown as FixedSizeTokenList)<{
+
+const FixedSizeListComponent = FixedSizeList as unknown as ComponentClass<FixedSizeListProps<ItemData>>
+const TRANSIENT_PROPS = new Set(['hover', 'scrollbar'])
+
+const BaseTokenList = forwardRef<FixedSizeList<ItemData>, FixedSizeListProps<ItemData>>(function BaseTokenList(
+  props,
+  ref
+) {
+  return (
+    <FixedSizeListComponent
+      {...props}
+      ref={ref as LegacyRef<Component<FixedSizeListProps<ItemData>, any, any>>}
+    />
+  )
+})
+
+const TokenList = styled(BaseTokenList).withConfig({
+  shouldForwardProp: (prop, defaultValidatorFn) =>
+    typeof prop === 'string' ? !TRANSIENT_PROPS.has(prop) && defaultValidatorFn(prop) : defaultValidatorFn(prop),
+})<{
   hover: number
   scrollbar?: ReturnType<typeof useScrollbar>
 }>`
@@ -228,19 +249,19 @@ const TokenOptions = forwardRef<TokenOptionsHandle, TokenOptionsProps>(function 
       {/* OnHover is a workaround to Safari's incorrect (overflow: overlay) implementation */}
       <OnHover hover={hover} ref={onHover} />
       <AutoSizer disableWidth>
-        {({ height }) => (
+        {({ height }: { height: number }) => (
           <TokenList
+            className="scrollbar"
             hover={hover}
+            scrollbar={scrollbar}
             height={height}
             width="100%"
             itemCount={tokens.length}
             itemData={tokens}
             itemKey={itemKey}
             itemSize={ITEM_SIZE}
-            className="scrollbar"
             ref={list}
             outerRef={setElement}
-            scrollbar={scrollbar}
           >
             {
               // AutoSizer incorrectly requires this to be typed `& ReactNode`:

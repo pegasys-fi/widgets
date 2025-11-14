@@ -2,8 +2,8 @@ import 'assets/fonts.scss'
 import './external'
 
 import { mix, rgba, transparentize } from 'polished'
-import { createContext, PropsWithChildren, useContext, useMemo, useState } from 'react'
-import { DefaultTheme, ThemeProvider as StyledProvider } from 'styled-components/macro'
+import { ComponentType, PropsWithChildren, ReactNode, createContext, useContext, useMemo, useState } from 'react'
+import { DefaultTheme, ThemeProvider as StyledProvider } from 'styled-components'
 import { opacify } from 'utils/opacify'
 
 import { Layer } from './layer'
@@ -158,7 +158,7 @@ export function Provider({ theme, children }: PropsWithChildren<ThemeProps>) {
   }, [contextTheme, theme])
   return (
     <ThemeContext.Provider value={value}>
-      <StyledProvider theme={value}>{children}</StyledProvider>
+      <StyledProviderCompat theme={value}>{children}</StyledProviderCompat>
     </ThemeContext.Provider>
   )
 }
@@ -181,3 +181,4 @@ function toDefaultTheme(theme: Required<Theme>): DefaultTheme {
     }
   }
 }
+const StyledProviderCompat = StyledProvider as unknown as ComponentType<{ theme: DefaultTheme; children?: ReactNode }>

@@ -20,7 +20,11 @@ module.exports = {
   ],
   plugins: [
     '@babel/plugin-transform-runtime',
-    'macros',
+    'babel-plugin-macros',
+    [
+      "babel-plugin-styled-components", 
+      { "displayName": true }
+    ],
     [
       'module-resolver',
       {

@@ -5,11 +5,11 @@ import { FeeAmount } from '@pollum-io/v3-sdk'
 import { formatCurrencyAmount, NumberType } from '@uniswap/conedison/format'
 import { ReactComponent as DotLine } from 'assets/svg/dot_line.svg'
 import Column from 'components/Column'
-import Row from 'components/Row'
+import Row, { RowProps } from 'components/Row'
 import Rule from 'components/Rule'
 import TokenImg from 'components/TokenImg'
 import { AutoRouter } from 'icons'
-import { ComponentProps, forwardRef, useMemo } from 'react'
+import { ComponentPropsWithoutRef, forwardRef, useMemo } from 'react'
 import { InterfaceTrade } from 'state/routing/types'
 import styled from 'styled-components/macro'
 import { Layer, ThemedText } from 'theme'
@@ -24,10 +24,9 @@ const StyledAutoRouterLabel = styled(ThemedText.ButtonSmall)`
   }
 `
 
-export const AutoRouterHeader = forwardRef<HTMLDivElement, ComponentProps<typeof Row>>(function AutoRouterHeader(
-  props,
-  ref
-) {
+type AutoRouterHeaderProps = ComponentPropsWithoutRef<'div'> & Omit<RowProps, 'theme'>
+
+export const AutoRouterHeader = forwardRef<HTMLDivElement, AutoRouterHeaderProps>(function AutoRouterHeader(props, ref) {
   return (
     <Row justify="left" gap={0.25} ref={ref} {...props}>
       <AutoRouter />

@@ -8,9 +8,16 @@
 
 import { Attributes, Colors, ThemeBorderRadius } from './theme'
 
-declare module 'styled-components/macro' {
-  export interface DefaultTheme extends Omit<Attributes, 'borderRadius'>, Colors {
+type ThemeExtension = Omit<Attributes, 'borderRadius'> &
+  Colors & {
     borderRadius: ThemeBorderRadius
     onHover: (color: string) => string
   }
+
+declare module 'styled-components/macro' {
+  export interface DefaultTheme extends ThemeExtension {}
+}
+
+declare module 'styled-components' {
+  export interface DefaultTheme extends ThemeExtension {}
 }

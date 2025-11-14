@@ -54,7 +54,7 @@ const transpile = {
 
     // Source code transformation
     json(), // imports json as ES6; doing so enables module resolution
-    url({ include: ['**/*.png', '**/*.svg'], limit: Infinity }), // imports assets as data URIs
+    url({ include: ['**/*.png', '**/*.svg', '**/*.gif'], limit: Infinity }), // imports assets as data URIs
     svgr({ jsxRuntime: 'automatic' }), // imports svgs as React components (without re-importing React)
     sass({ output: 'dist/fonts.css', verbose: false }), // generates fonts.css
     commonjs(), // transforms cjs dependencies into tree-shakeable ES modules

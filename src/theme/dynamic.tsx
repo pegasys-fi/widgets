@@ -1,7 +1,7 @@
 import { darken, lighten, opacify, transparentize } from 'polished'
 import { readableColor } from 'polished'
-import { ReactNode, useMemo } from 'react'
-import { DefaultTheme, ThemeProvider as StyledProvider, useTheme } from 'styled-components/macro'
+import { ComponentType, ReactNode, useMemo } from 'react'
+import { DefaultTheme, ThemeProvider as StyledProvider, useTheme } from 'styled-components'
 import { hex } from 'wcag-contrast'
 
 import type { Colors } from './theme'
@@ -72,8 +72,9 @@ export function DynamicThemeProvider({ color, children }: DynamicThemeProviderPr
     return getDynamicTheme(theme, accessibleColor)
   }, [theme, color])
   return (
-    <StyledProvider theme={value}>
+    <StyledProviderCompat theme={value}>
       <div style={{ color: value.primary }}>{children}</div>
-    </StyledProvider>
+    </StyledProviderCompat>
   )
 }
+const StyledProviderCompat = StyledProvider as unknown as ComponentType<{ theme: DefaultTheme; children?: ReactNode }>

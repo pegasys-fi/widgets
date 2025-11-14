@@ -1,5 +1,5 @@
 import { Icon } from 'icons'
-import { ComponentProps, forwardRef } from 'react'
+import { ButtonHTMLAttributes, ComponentProps, ForwardRefExoticComponent, forwardRef, RefAttributes } from 'react'
 import styled from 'styled-components/macro'
 import { AnimationSpeed, Color } from 'theme'
 
@@ -53,17 +53,24 @@ const StyledIconButton = styled(SecondaryButton)`
   height: 1rem;
 `
 
-interface IconButtonProps {
+type IconButtonBaseProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'color'> & {
+  color?: Color
+}
+
+export interface IconButtonProps extends IconButtonBaseProps {
   icon: Icon
   iconProps?: ComponentProps<Icon>
 }
 
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps & ComponentProps<typeof BaseButton>>(
-  function IconButton({ icon: Icon, iconProps, ...props }: IconButtonProps & ComponentProps<typeof BaseButton>, ref) {
-    return (
-      <StyledIconButton {...props} ref={ref}>
-        <Icon {...iconProps} />
-      </StyledIconButton>
-    )
-  }
-)
+type IconButtonComponent = ForwardRefExoticComponent<IconButtonProps & RefAttributes<HTMLButtonElement>>
+
+export const IconButton: IconButtonComponent = forwardRef<HTMLButtonElement, IconButtonProps>(function IconButton(
+  { icon: Icon, iconProps, ...props },
+  ref
+) {
+  return (
+    <StyledIconButton {...props} ref={ref}>
+      <Icon {...iconProps} />
+    </StyledIconButton>
+  )
+})

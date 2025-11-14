@@ -43,7 +43,7 @@ export default function Tooltip({
   offset,
   contained,
 }: TooltipProps) {
-  const [tooltip, setTooltip] = useState<HTMLDivElement>()
+  const [tooltip, setTooltip] = useState<HTMLButtonElement | null>(null)
   const showTooltip = useTooltip(tooltip)
   return (
     <Popover content={children} show={showTooltip} placement={placement} offset={offset} contained={contained}>
@@ -57,7 +57,7 @@ interface TooltipTextProps extends TooltipBaseProps {
 }
 
 export function TooltipText({ text, children, placement = 'auto', offset, contained }: TooltipTextProps) {
-  const [tooltip, setTooltip] = useState<HTMLDivElement | null>()
+  const [tooltip, setTooltip] = useState<HTMLDivElement | null>(null)
   const showTooltip = useTooltip(tooltip)
   return (
     <Popover content={children} show={showTooltip} placement={placement} offset={offset} contained={contained}>
